@@ -1,4 +1,4 @@
-# 2022-2023 season robot code (Team 5152)
+<h1 align="center">2022-2023 season robot code (Team 5152)</h1>
 <!--The GitHub for FRC Team 5152.
 
 TODO:
