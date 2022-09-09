@@ -1,42 +1,20 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-# This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
-
-name: Java CI with Gradle
+name: Java CI
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
-
-permissions:
-  contents: read
+    branches:
+      - main
+      - master
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 11
-      uses: actions/setup-java@v3
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-    - name: Setup RoboRIO Toolchain
-      if: ${{ (matrix.language == 'cpp') || (matrix.language == 'jni') }}
-      run: ./gradlew installRoboRioToolchain
-      working-directory: testing/${{ matrix.language }}
-    - name: Test ${{ matrix.language }} Build
-      run: ./gradlew build
-      working-directory: testing/${{ matrix.language }}
-
-    - uses: actions/upload-artifact@v2
-      with:
-        name: ${{ matrix.language }}
-        path: testing/${{ matrix.language }}/build/
+      - uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Run gradle tests
+        run: ./gradlew check
