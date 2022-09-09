@@ -1,4 +1,5 @@
-<h1 align="center">2022-2023 season robot code (Team 5152)</h1>
+<h1 align="center">2022-2023 season robot code (Team 5152)</h1><br>
+[![Java CI with Gradle](https://github.com/FRC5152Alotobots/2021robotCode/actions/workflows/gradle.yml/badge.svg)](https://github.com/FRC5152Alotobots/2021robotCode/actions/workflows/gradle.yml)<br>
 <!--The GitHub for FRC Team 5152.
 
 TODO:
