@@ -28,7 +28,15 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-    - name: Build with Gradle
-      uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+    - name: Setup RoboRIO Toolchain
+      if: ${{ (matrix.language == 'cpp') || (matrix.language == 'jni') }}
+      run: ./gradlew installRoboRioToolchain
+      working-directory: testing/${{ matrix.language }}
+    - name: Test ${{ matrix.language }} Build
+      run: ./gradlew build
+      working-directory: testing/${{ matrix.language }}
+
+    - uses: actions/upload-artifact@v2
       with:
-        arguments: build
+        name: ${{ matrix.language }}
+        path: testing/${{ matrix.language }}/build/
