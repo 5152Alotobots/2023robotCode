@@ -1,6 +1,10 @@
 <h1 align="center">2022-2023 season robot code (Team 5152)<br>
 
-[![Java CI with Gradle](https://github.com/FRC5152Alotobots/2022robotCode/actions/workflows/gradle.yml/badge.svg)](https://github.com/FRC5152Alotobots/2022robotCode/actions/workflows/gradle.yml)<br>
+[![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)](https://jdk.java.net/11/)
+[![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/FRC5152Alotobots/2022robotCode/actions)
+[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/FRC5152Alotobots/2022robotCode)
+
+<br>
     </h1>
 
 <!--The GitHub for FRC Team 5152.
