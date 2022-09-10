@@ -43,8 +43,8 @@ public class DriveSubSys extends SubsystemBase {
     new DriveSubSys_Shuffleboard();
 
   // GyroScope
-  private GryoSubSys m_GyroSubSys;
-  //private PigeonGyroSubSys m_GyroSubSys; 
+  //private GryoSubSys m_GyroSubSys;
+  private PigeonGyroSubSys m_GyroSubSys; 
 
 
   /**

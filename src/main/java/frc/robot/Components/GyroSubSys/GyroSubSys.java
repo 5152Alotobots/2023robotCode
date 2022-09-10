@@ -47,7 +47,7 @@ public class GyroSubSys extends SubsystemBase {
     // This method will be called once per scheduler run
 
     // Display
-    SmartDashboard.putNumber("GyroYawAngleDeg", m_Gyro.getYawAngleDeg());
+    SmartDashboard.putNumber("GyroYawAngleDeg", m_Gyro.getGyroAngle());
   }
 
   /**
@@ -55,7 +55,7 @@ public class GyroSubSys extends SubsystemBase {
    * @return Gyro Yaw Angle double Degrees
    */
   public double getGyroYawAngleDeg(){
-    return m_Gyro.getGyroYawAngleDeg();
+    return m_Gyro.getGyroAngle();
   }
 
   /**
@@ -71,7 +71,7 @@ public class GyroSubSys extends SubsystemBase {
    * @param yawAngleDeg Gyro Yaw Angle Degrees
    */
   public void setYaw(double yawAngleDeg){
-    m_Pigeon2Gyro.setYaw(yawDegrees);
+    m_Gyro.setYaw(yawAngleDeg);
   }
 
 }
