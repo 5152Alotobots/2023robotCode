@@ -16,9 +16,9 @@ TODO:
 <div id="top"></div>
 
 <p align="center">
-    <a href="https://github.com/FRC5152Alotobots/2022robotCode/graphs/contributors" alt="Contributors">
+    <a href="https://github.com/FRC5152Alotobots/2023robotCode/graphs/contributors" alt="Contributors">
         <img src="https://img.shields.io/github/contributors/badges/shields" /></a>
-    <a href="https://github.com/FRC5152Alotobots/2022robotCode/pulse" alt="Activity">
+    <a href="https://github.com/FRC5152Alotobots/2023robotCode/pulse" alt="Activity">
         <img src="https://img.shields.io/github/commit-activity/m/badges/shields" /></a>
 </p>
 
@@ -37,11 +37,11 @@ TODO:
     The GitHub for FRC Team 5152.
     <br />
     <br />
-    <a href="https://github.com/FRC5152Alotobots/2022robotCode">View Code</a>
+    <a href="https://github.com/FRC5152Alotobots/2023robotCode">View Code</a>
     ·
-    <a href="https://github.com/FRC5152Alotobots/2022robotCode/issues">Report Bug</a>
+    <a href="https://github.com/FRC5152Alotobots/2023robotCode/issues">Report Bug</a>
     ·
-    <a href="https://github.com/FRC5152Alotobots/2022robotCode/issues">Request Feature</a>
+    <a href="https://github.com/FRC5152Alotobots/2023robotCode/issues">Request Feature</a>
   </p>
 </div>
 
@@ -85,7 +85,7 @@ TODO:
 
 <!-- GETTING STARTED -->
 ## Getting Started
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/FRC5152Alotobots/2022robotCode/)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/FRC5152Alotobots/2023robotCode/)
 
 
 ### Prerequisites
@@ -112,28 +112,11 @@ TODO:
   #Macos
   #Download installer and run
   ```
-  <!--
-* Php (8.0+) (Required for web-proxy)
-  ```sh
-  # Most Linux distros
-  sudo apt-get install php libapache2-mod-php php-mcrypt php-mysql
-  # Note: some distro's the above command does not work. In that case install it using Apache instead
-  ```
-  
-  * Doom3 Demo Pk4 file (Required for doom3wasm)
-  
-  a) Get the Doom 3 Demo from Fileplanet (or other sources): https://www.fileplanet.com/archive/p-15998/DOOM-3-Demo
-
-  b) Install the Demo (using wine on Linux)
-
-  c) Copy <D3Demo_install_path>/demo/demo00.pk4 to <ProjectAperture>/Games/d3wasm-min/data/demo folder
-  
--->
 ### Installation
 
 1. Clone the repo
    ```sh
-    git clone https://github.com/FRC5152Alotobots/2022robotCode.git
+    git clone https://github.com/FRC5152Alotobots/2023robotCode.git
    ```
   
 2. Build
@@ -162,7 +145,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Protect branches
 - [ ] Get base code
 
-See the [open issues](https://github.com/FRC5152Alotobots/2022robotCode) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/FRC5152Alotobots/2023robotCode) for a full list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -182,20 +165,11 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 
 
-Project Link: [https://github.com/SeanErn/ProjectAperture](https://github.com/FRC5152Alotobots/2022robotCode)<br>
+Project Link: [github.com](https://github.com/FRC5152Alotobots/2023robotCode)<br>
 Developer Emails:<br>
 Seanernstes@otsegops.org<br>
 Rowankortlandt@otsegops.org
 <!-- ACKNOWLEDGMENTS -->
-<!--
-## Acknowledgments
-
-* [yancharkin's spelunky classic ported to HTML 5](https://github.com/yancharkin/SpelunkyClassicHDhtml5)
-* [TheAlienDrew's Minecraft classic copy](https://github.com/TheAlienDrew/minecraft-classic)
-* [sparticle999's SpaceCompany game](https://github.com/sparticle999/SpaceCompany)
-* [LAX1DUDE's "eaglecraft" (Minecraft 1.5.2 web compilation)](https://github.com/LAX1DUDE/eaglercraft)
-* [othneildrew's README template](https://github.com/othneildrew/Best-README-Template)
--->
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
