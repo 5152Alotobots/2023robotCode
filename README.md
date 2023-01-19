@@ -133,9 +133,10 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Finish Orginization Setup
-- [ ] Protect branches
-- [ ] Get base code
+- [ ] Finish swerve drive code
+- [ ] Program hand
+- [ ] Program lift
+- [ ] Program computer vision/auton
 
 See the [open issues](https://github.com/FRC5152Alotobots/2023robotCode) for a full list of proposed features (and known issues).
 
