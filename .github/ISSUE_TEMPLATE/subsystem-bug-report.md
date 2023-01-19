@@ -10,7 +10,7 @@ assignees: SeanErn, Rkortlandt
 **Describe the bug**
 A clear and concise description of what the bug is.
 
-**Command Details (please complete the following information):**
+**Subsystem Details (please complete the following information):**
 - Name: [eg. Subsys_Teleop]
 - Filepath [eg. /src/main/java/frc/robot/Subsys_test.java]
 

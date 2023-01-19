@@ -1,8 +1,8 @@
 ---
-name: Command Bug Report
-about: Report a bug that is caused by a command
-title: "[BUG] [Command] "
-labels: bug, Command, Subsystem
+name: Hardware Bug report
+about: Report a bug that is caused by a hardware error
+title: "[BUG] [HARDWARE_DEVICE_NAME] [LEVEL_OF_URGENCY]"
+labels: bug, Other
 assignees: SeanErn, Rkortlandt
 
 ---
@@ -10,9 +10,9 @@ assignees: SeanErn, Rkortlandt
 **Describe the bug**
 A clear and concise description of what the bug is.
 
-**Command Details (please complete the following information):**
-- Name: [eg. Cmd_Teleop]
-- Filepath [eg. /src/main/java/frc/robot/Cmd_test.java]
+**Hardware Details (please complete the following information):**
+- Part: [eg. Front left motor]
+- Software ID (if applicable) [eg. fr_motor or CAN ID 3]
 
 **To Reproduce**
 Steps to reproduce the behavior:
