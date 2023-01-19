@@ -1,9 +1,9 @@
 ---
-name: Driver Feature request
-about: Suggest an idea for this project (DRIVERS ONLY)
-title: "[REQUEST] [DRIVER_NAME] [LEVEL_OF_URGENCY]"
-labels: Driver Request, enhancement
-assignees: SeanErn, Rkortlandt
+name: 'Feature request '
+about: Suggest an idea for this project (EVERYONE)
+title: ''
+labels: ''
+assignees: ''
 
 ---
 
