@@ -17,7 +17,7 @@ public class PwrDistributionSubSys extends SubsystemBase {
    * Creates a new Power distribution Subsystem.
    */
 
-  PowerDistribution pdp = new PowerDistribution(CAN_IDs.PDP_ID, ModuleType.kRev);
+  PowerDistribution pdp = new PowerDistribution(CAN_IDs.PDP_CAN_ID, ModuleType.kRev);
 
   public PwrDistributionSubSys() {
 

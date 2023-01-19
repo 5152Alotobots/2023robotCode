@@ -149,7 +149,7 @@ public final class Constants {
   }
     
   public static final class CAN_IDs {
-    public static final int PDP_ID = 1;
+    public static final int PDP_CAN_ID = 1;
         
     public static final int FrontLeftDriveMtr_ID = 2;
     public static final int FrontLeftSteerMtr_ID = 3;
