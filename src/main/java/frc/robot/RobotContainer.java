@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import frc.robot.ChargedUp.DriverStation.SubSys_DriverStation;
+import frc.robot.ChargedUp.Hand.SubSys_Hand;
 import frc.robot.Library.DriveTrains.SubSys_DriveTrain;
 import frc.robot.Library.DriveTrains.Cmds_SubSys_DriveTrain.Cmd_SubSys_DriveTrain_JoysticDefault;
 import frc.robot.Library.Gyroscopes.Pigeon2.SubSys_PigeonGyro;
@@ -53,6 +54,10 @@ public class RobotContainer {
  
   // ---- Driver Station
   public final SubSys_DriverStation driverStation = new SubSys_DriverStation();
+
+  // ---- Hand
+  public final SubSys_Hand handSubSys = new SubSys_Hand();
+
   // SetUp Auto
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -124,6 +129,12 @@ public class RobotContainer {
     // Gyro Reset Command Button
     driverStation.GyroResetButton.onTrue(
         new InstantCommand(driveSubSys::zeroGyro, driveSubSys));
+    //Open/Close Hand
+    driverStation.OpenHandButton.onTrue(
+        new InstantCommand(handSubSys::OpenHand, handSubSys));
+    driverStation.CloseHandButton.onTrue(
+        new InstantCommand(handSubSys::CloseHand, handSubSys));
+    
   }
 
   /**

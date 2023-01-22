@@ -22,4 +22,11 @@ public class SubSys_Hand extends SubsystemBase {
     SubSys_Hand_Constants.kHandSolenoidChannel
   );
 
+  public void OpenHand(){
+    m_handSolenoid.set(false);
+  }
+
+  public void CloseHand(){
+    m_handSolenoid.set(true);
+  }
 }
