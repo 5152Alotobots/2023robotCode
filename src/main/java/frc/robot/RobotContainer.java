@@ -16,6 +16,8 @@ import frc.robot.ChargedUp.DriverStation.SubSys_DriverStation;
 import frc.robot.ChargedUp.Hand.SubSys_Hand;
 import frc.robot.Library.DriveTrains.SubSys_DriveTrain;
 import frc.robot.Library.DriveTrains.Cmds_SubSys_DriveTrain.Cmd_SubSys_DriveTrain_JoysticDefault;
+import frc.robot.Library.DriveTrains.Cmds_SubSys_DriveTrain.Cmd_SubSys_MecanumDriveTerain;
+import frc.robot.Library.DriveTrains.MecanumDrive.SubSys_MecanumDriveTrain;
 import frc.robot.Library.Gyroscopes.Pigeon2.SubSys_PigeonGyro;
 import frc.robot.Library.Vision.Limelight.SubSys_LimeLight;
 
@@ -48,6 +50,8 @@ public class RobotContainer {
   // ---- Drive Subsystem (Swerve)
   public final SubSys_DriveTrain driveSubSys = new SubSys_DriveTrain(gyroSubSys);
 
+  // ---- Drive Subsystem (Mecanum)
+  public final SubSys_MecanumDriveTrain mecanumDriveSubSys = new SubSys_MecanumDriveTrain();
   /*
   ***** Charged Up Componentes
   */
@@ -90,7 +94,7 @@ public class RobotContainer {
     */
 
     // ---- Drive Subsystem Default Command
-    driveSubSys
+    /*driveSubSys
       .setDefaultCommand(new Cmd_SubSys_DriveTrain_JoysticDefault(
         driveSubSys,
         () -> driverStation.DriveFwdAxis(),
@@ -99,6 +103,15 @@ public class RobotContainer {
         true,
         () -> driverStation.RotateLeftPt(),
         () -> driverStation.RotateRightPt()));
+*/
+    // ---- Mecanum Drive Subsystem Default Command
+    mecanumDriveSubSys
+      .setDefaultCommand(new Cmd_SubSys_MecanumDriveTerain(
+        mecanumDriveSubSys,
+        () -> driverStation.DriveFwdAxis(),
+        () -> driverStation.DriveStrAxis(),
+        () -> driverStation.DriveRotAxis()
+        ));
 
     // Sendable Chooser
     //m_chooser.setDefaultOption("Auto_BasicRevHighGoalRev_Cmd", m_Auto_BasicRevHighGoalRev_Cmd);
