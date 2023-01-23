@@ -32,40 +32,44 @@ public class SubSys_SwerveDrive_Constants {
 
     /** Swerve Module Constants */
     public static final SwerveModuleConstants FL_constants = new SwerveModuleConstants(
-        "FL",                                       // Module Name
-        Constants.CAN_IDs.FrontLeftDriveMtr_ID,     // Drive Motor CAN ID
-        false,                                      // Drive Motor Inverted
-        Constants.CAN_IDs.FrontLeftSteerMtr_ID,     // Steer Motor CAN ID
-        false,                                      // Steer Motor Inverted   
-        255,                                        // CANCoder ID (255 for not used)       
-        10.0);                                      // Degrees
+        "FL",                                        // Module Name
+        Constants.CAN_IDs.FrontLeftDriveMtr_CAN_ID,             // Drive Motor CAN ID
+        false,                                 // Drive Motor Inverted
+        Constants.CAN_IDs.FrontLeftSteerMtr_CAN_ID,             // Steer Motor CAN ID
+        true,                                 // Steer Motor Inverted   
+        Constants.CAN_IDs.FrontLeftSteerCANCoder_CAN_ID,        // CANCoder ID (255 for not used)       
+        true,
+        0);                                      // Degrees
 
     public static final SwerveModuleConstants FR_constants = new SwerveModuleConstants(
         "FR",                                       // Module Name
-        Constants.CAN_IDs.FrontRightDriveMtr_ID,    // Drive Motor CAN ID
+        Constants.CAN_IDs.FrontRightDriveMtr_CAN_ID,    // Drive Motor CAN ID
         false,                                      // Drive Motor Inverted
-        Constants.CAN_IDs.FrontRightSteerMtr_ID,    // Steer Motor CAN ID
-        false,                                      // Steer Motor Inverted   
-        255,                                        // CANCoder ID (255 for not used)       
-        10.0);                                      // Degrees 
+        Constants.CAN_IDs.FrontRightSteerMtr_CAN_ID,    // Steer Motor CAN ID
+        true,                                      // Steer Motor Inverted   
+        Constants.CAN_IDs.FrontRightSteerCANCoder_CAN_ID,                                        // CANCoder ID (255 for not used)       
+        true,
+        289);                                      // Degrees 
 
     public static final SwerveModuleConstants BL_constants = new SwerveModuleConstants(
         "BL",                                       // Module Name
-        Constants.CAN_IDs.BackLeftDriveMtr_ID,      // Drive Motor CAN ID
+        Constants.CAN_IDs.BackLeftDriveMtr_CAN_ID,      // Drive Motor CAN ID
         false,                                      // Drive Motor Inverted
-        Constants.CAN_IDs.BackLeftSteerMtr_ID,      // Steer Motor CAN ID
-        false,                                      // Steer Motor Inverted   
-        255,                                        // CANCoder ID (255 for not used)       
-        10.0);                                      // Degrees
+        Constants.CAN_IDs.BackLeftSteerMtr_CAN_ID,      // Steer Motor CAN ID
+        true,                                      // Steer Motor Inverted   
+        Constants.CAN_IDs.BackLeftSteerCANCoder_CAN_ID,                                        // CANCoder ID (255 for not used)       
+        true,
+        166);                                      // Degrees
 
     public static final SwerveModuleConstants BR_constants = new SwerveModuleConstants(
         "BR",                                       // Module Name
-        Constants.CAN_IDs.BackRightDriveMtr_ID,     // Drive Motor CAN ID
+        Constants.CAN_IDs.BackRightDriveMtr_CAN_ID,     // Drive Motor CAN ID
         false,                                      // Drive Motor Inverted
-        Constants.CAN_IDs.BackRightSteerMtr_ID,     // Steer Motor CAN ID
-        false,                                      // Steer Motor Inverted   
-        255,                                        // CANCoder ID (255 for not used)       
-        10.0);                                      // Degrees
+        Constants.CAN_IDs.BackRightSteerMtr_CAN_ID,     // Steer Motor CAN ID
+        true,                                      // Steer Motor Inverted   
+        Constants.CAN_IDs.BackRightSteerCANCoder_CAN_ID,                                        // CANCoder ID (255 for not used)       
+        true,
+        106);                                      // Degrees
 
     public static final Translation2d RotationPtFL = new Translation2d(
         0.6096,

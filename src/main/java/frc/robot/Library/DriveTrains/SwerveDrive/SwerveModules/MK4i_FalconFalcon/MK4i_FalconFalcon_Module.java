@@ -20,8 +20,10 @@ package frc.robot.Library.DriveTrains.SwerveDrive.SwerveModules.MK4i_FalconFalco
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.DemandType;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.sensors.CANCoder;
+import com.ctre.phoenix.sensors.SensorInitializationStrategy;
 
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -59,7 +61,11 @@ public class MK4i_FalconFalcon_Module {
 
             /* Drive Motor Config */
             this.driveMotor = new TalonFX(moduleConstants.driveMotorID);
-            configDriveMotor(moduleConstants);
+            configDriveMotor(moduleConstants);         
+
+            /* Angle Encoder Config */
+            this.steerAngleEncoder = new CANCoder(moduleConstants.cancoderID);
+            configSteerAngleEncoder(moduleConstants);
 
             /* Steer Motor Config */
             this.steerMotor = new TalonFX(moduleConstants.steerMotorID);
@@ -67,12 +73,10 @@ public class MK4i_FalconFalcon_Module {
 
             this.strAngleOffset = moduleConstants.angleOffset;
         
-            /* Angle Encoder Config */
-            this.steerAngleEncoder = new CANCoder(moduleConstants.cancoderID);
-            configAngleEncoder(moduleConstants);
-
             lastAngle = getState().angle.getDegrees();
         }
+
+    /* ***** Swerve Module Methods ***** */
 
     public void setDesiredState(
         SwerveModuleState desiredState,
@@ -129,7 +133,7 @@ public class MK4i_FalconFalcon_Module {
             MK4i_FalconFalcon_Module_Constants.DriveMotor.driveGearRatio);
 
         /** Steer Motor Angle */
-        Rotation2d angle = steerAngle();
+        Rotation2d angle = getSteerAngle();
         return new SwerveModuleState(velocity, angle);
     }
 
@@ -137,31 +141,66 @@ public class MK4i_FalconFalcon_Module {
     * Returns the current position of the module
     * @return ServeModulePosition:  The current position of the module
     */
-  
-    public SwerveModulePosition getPosition(){
+      public SwerveModulePosition getPosition(){
         SwerveModulePosition swrModulePosition;
         double drvDistance;
         Rotation2d strAngle;
 
         drvDistance = driveMotor.getSelectedSensorPosition();
-        strAngle = steerAngle();
+        strAngle = getSteerAngle();
 
     swrModulePosition = new SwerveModulePosition(drvDistance, strAngle);
 
     return swrModulePosition;
   }
 
+    /* ***** Drive Motor Methods ***** */  
+  
     private void configDriveMotor(SwerveModuleConstants moduleConstants){        
         driveMotor.configFactoryDefault();
-        driveMotor.configAllSettings(MK4i_FalconFalcon_Module_Constants.DriveTalonFXConfig);
+        //driveMotor.configAllSettings(MK4i_FalconFalcon_Module_Constants.DriveTalonFXConfig);
         driveMotor.setInverted(moduleConstants.driveMotorInvert);
         driveMotor.setNeutralMode(MK4i_FalconFalcon_Module_Constants.DriveMotor.neutralMode);
-        driveMotor.setSelectedSensorPosition(0);
+        //driveMotor.setSelectedSensorPosition(0);
+    }
+    
+    /* ***** Steer Angle Encoder Methods ***** */
+
+    /**  configSteerAngleEncoder
+     *      Configure Steer Angle Encoder
+     * @param moduleConstants
+     */
+    private void configSteerAngleEncoder(SwerveModuleConstants moduleConstants){
+        steerAngleEncoder.configSensorInitializationStrategy(SensorInitializationStrategy.BootToAbsolutePosition);
+        steerAngleEncoder.configMagnetOffset(moduleConstants.angleOffset);
+        steerAngleEncoder.configSensorDirection(moduleConstants.SteerCANcoderInvert);
+    }
+    
+    /** getSteerSensorAbsolutePos
+     *   Returns the Absolute Position Measurement
+     * @return double Absolute Steer Sensor Positions Measurement  
+     */
+    public double getSteerSensorAbsolutePos(){
+        return steerAngleEncoder.getAbsolutePosition();
     }
 
+    /** getSteerSensorPos
+     *   Returns the Position Measurement
+     * @return double Steer Sensor Position Measurement
+     */
+    public double getSteerSensorPos(){
+        return steerAngleEncoder.getPosition();
+    }
+
+    /* ***** Steer Motor Methods ***** */
+    
+    /** configSteerMotor
+     * 
+     * @param moduleConstants
+     */
     private void configSteerMotor(SwerveModuleConstants moduleConstants){
         steerMotor.configFactoryDefault();
-        steerMotor.configAllSettings(MK4i_FalconFalcon_Module_Constants.SteerTalonFXConfig);
+        //steerMotor.configAllSettings(MK4i_FalconFalcon_Module_Constants.SteerTalonFXConfig);
         steerMotor.setInverted(moduleConstants.steerMotorInvert);
         steerMotor.setNeutralMode(MK4i_FalconFalcon_Module_Constants.SteerMotor.neutralMode);
 
@@ -169,31 +208,35 @@ public class MK4i_FalconFalcon_Module {
         steerMotor.configSelectedFeedbackCoefficient(MK4i_FalconFalcon_Module_Constants.SteerMotor.selectedFeedbackCoefficient);
         steerMotor.configFeedbackNotContinuous(MK4i_FalconFalcon_Module_Constants.SteerMotor.feedbackNotContinuous, 0);
         steerMotor.setSensorPhase(MK4i_FalconFalcon_Module_Constants.SteerMotor.sensorPhase);
+
+        // Config Internal Encoder
+        steerMotor.configIntegratedSensorInitializationStrategy(SensorInitializationStrategy.BootToAbsolutePosition);
+        steerMotor.configIntegratedSensorOffset(0.0);
+
+        // Config Remote Encoder
+        steerMotor.configRemoteFeedbackFilter(steerAngleEncoder, 0);
+        steerMotor.setSensorPhase(MK4i_FalconFalcon_Module_Constants.SteerCANcoder.sensorPhase);
+        steerMotor.configSelectedFeedbackCoefficient(MK4i_FalconFalcon_Module_Constants.SteerCANcoder.selectedFeedbackCoefficient);
+
+        steerMotor.configSelectedFeedbackSensor(
+            FeedbackDevice.RemoteSensor0, 
+            0, 
+            0);
     }
 
-    private void configAngleEncoder(SwerveModuleConstants moduleConstants){
-
+    /** getSteerMotorPos
+     *      Return Steer Motor Position (Need to specify PID?)
+     * @return double Steer Motor Position (Raw sensor units)
+     */
+    public double getSteerMotorPos(){
+        return steerMotor.getSelectedSensorPosition();
     }
 
-    public double steerSensorCnts(){
-        double mSteerSensorCnts = steerMotor.getSelectedSensorPosition();
-        return mSteerSensorCnts;
+    /** getSteerAngle
+     *      Return Steer Motor Angle in Rotation2d 
+     * @return Rotation2d Steer Motor Angle
+     */
+    public Rotation2d getSteerAngle(){
+        return new Rotation2d();
     }
-
-    public double steerSensorCntsCorrected(){
-        double mSteerSensorCntsCorrected = steerSensorCnts()-this.strAngleOffset;
-        return mSteerSensorCntsCorrected;
-    }
-
-    public double steerAngleRaw(){
-        double mSteerAngleRaw = TalonSRX_Conversions.ma3ToDegrees(
-            steerSensorCntsCorrected(),
-            MK4i_FalconFalcon_Module_Constants.SteerMotor.steerGearRatio);
-        return mSteerAngleRaw;
-    }
-
-    public Rotation2d steerAngle(){
-        Rotation2d strAng = Rotation2d.fromDegrees(steerAngleRaw());
-        return strAng;
-    }    
 }

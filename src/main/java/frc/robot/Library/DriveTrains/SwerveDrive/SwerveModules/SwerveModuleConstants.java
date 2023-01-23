@@ -12,6 +12,7 @@ public class SwerveModuleConstants {
     public final int steerMotorID;
     public final boolean steerMotorInvert;
     public final int cancoderID;
+    public final boolean SteerCANcoderInvert;
     public final double angleOffset;
 
     /**
@@ -22,6 +23,7 @@ public class SwerveModuleConstants {
      * @param steerMotorID
      * @param steerMotorInvert
      * @param canCoderID
+     * @param steerCANCoderInvert
      * @param angleOffset
      */
     public SwerveModuleConstants(
@@ -31,6 +33,7 @@ public class SwerveModuleConstants {
         int steerMotorID,
         boolean steerMotorInvert,
         int canCoderID,
+        boolean steerCANCoderInvert,
         double angleOffset){
         
             this.moduleName = moduleName;
@@ -39,6 +42,7 @@ public class SwerveModuleConstants {
             this.steerMotorID = steerMotorID;
             this.steerMotorInvert = steerMotorInvert;
             this.cancoderID = canCoderID;
+            this.SteerCANcoderInvert = steerCANCoderInvert;
             this.angleOffset = angleOffset;
     }
 }

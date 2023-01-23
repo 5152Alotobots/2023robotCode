@@ -12,17 +12,18 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.Library.DriveTrains.SwerveDrive.SwerveModules.SwrNStr_FalconPG71.SwrNStr_FalconPG71_Module;
+import frc.robot.Library.DriveTrains.SwerveDrive.SwerveModules.MK4i_FalconFalcon.MK4i_FalconFalcon_Module;
 import frc.robot.Library.Gyroscopes.Pigeon2.SubSys_PigeonGyro;
 
 public class SubSys_SwerveDrive extends SubsystemBase {
     /** Creates a new SubSys_SwerveDrive. */
  
-    public SwrNStr_FalconPG71_Module[] swerveModules;
+    public MK4i_FalconFalcon_Module[] swerveModules;
     public SwerveDriveOdometry swerveOdometry;
-    private SwerveModulePosition[] swerveModulePositions;
+    private SwerveModulePosition[] swerveModulePositionsInit;
     private SubSys_PigeonGyro gyroSubSys;
     // Rotate About Point
     private Translation2d rotationPt;
@@ -32,7 +33,7 @@ public class SubSys_SwerveDrive extends SubsystemBase {
     public SubSys_SwerveDrive(SubSys_PigeonGyro gyroSubSys) {
         this.gyroSubSys = gyroSubSys;
         
-        this.swerveModulePositions = new SwerveModulePosition[]{
+        this.swerveModulePositionsInit = new SwerveModulePosition[]{
             new SwerveModulePosition(0.0, new Rotation2d(0.0)),
             new SwerveModulePosition(0.0, new Rotation2d(0.0)),
             new SwerveModulePosition(0.0, new Rotation2d(0.0)),
@@ -43,13 +44,13 @@ public class SubSys_SwerveDrive extends SubsystemBase {
         this.swerveOdometry = new SwerveDriveOdometry(
             SubSys_SwerveDrive_Constants.swerveKinematics,
             getHeading(),
-            this.swerveModulePositions);
+            this.swerveModulePositionsInit);
 
-        this.swerveModules = new SwrNStr_FalconPG71_Module[] {
-            new SwrNStr_FalconPG71_Module("FL", SubSys_SwerveDrive_Constants.FL_constants),
-            new SwrNStr_FalconPG71_Module("FR", SubSys_SwerveDrive_Constants.FR_constants),
-            new SwrNStr_FalconPG71_Module("BL", SubSys_SwerveDrive_Constants.BL_constants),
-            new SwrNStr_FalconPG71_Module("BR", SubSys_SwerveDrive_Constants.BR_constants)
+        this.swerveModules = new MK4i_FalconFalcon_Module[] {
+            new MK4i_FalconFalcon_Module("FL", SubSys_SwerveDrive_Constants.FL_constants),
+            new MK4i_FalconFalcon_Module("FR", SubSys_SwerveDrive_Constants.FR_constants),
+            new MK4i_FalconFalcon_Module("BL", SubSys_SwerveDrive_Constants.BL_constants),
+            new MK4i_FalconFalcon_Module("BR", SubSys_SwerveDrive_Constants.BR_constants)
         };
 
         this.rotationPt = new Translation2d(0,0);
@@ -178,13 +179,14 @@ public class SubSys_SwerveDrive extends SubsystemBase {
 
     @Override
     public void periodic(){
+        SwerveModulePosition[] swerveModulePositions = getSwerveModulePositions();
+
         swerveOdometry.update(
             getHeading(), 
-            getSwerveModulePositions());  
+            swerveModulePositions);  
 
-        //for(SwerveModule mod : mSwerveMods){
-        //    SmartDashboard.putNumber("Mod " + mod.moduleNumber + " Cancoder", mod.getCanCoder().getDegrees());
-        //    SmartDashboard.putNumber("Mod " + mod.moduleNumber + " Integrated", mod.getState().angle.getDegrees());
-        //    SmartDashboard.putNumber("Mod " + mod.moduleNumber + " Velocity", mod.getState().speedMetersPerSecond);    
+        SmartDashboard.putNumber("FL_SteerSensor_AbsPos", swerveModules[0].getSteerSensorAbsolutePos());
+        SmartDashboard.putNumber("FL_SteerSensor_Pos", swerveModules[0].getSteerSensorPos());
+        SmartDashboard.putNumber("FL_SteerMotor_Pos", swerveModules[0].getSteerMotorPos());
     }
 }
