@@ -4,6 +4,8 @@
 
 package frc.robot.Library.Pneumatics;
 
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class SubSys_Pneumatics extends SubsystemBase {
@@ -13,5 +15,10 @@ public class SubSys_Pneumatics extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+  }
+
+Compressor pcmCompressor = new Compressor(20, PneumaticsModuleType.CTREPCM);
+  public void compressorOn() {
+    pcmCompressor.enableDigital();
   }
 }
