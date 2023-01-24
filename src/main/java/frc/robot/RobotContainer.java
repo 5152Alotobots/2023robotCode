@@ -7,7 +7,10 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -61,7 +64,7 @@ public class RobotContainer {
 
   // ---- Hand
   public final SubSys_Hand handSubSys = new SubSys_Hand();
-
+  
   // SetUp Auto
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
