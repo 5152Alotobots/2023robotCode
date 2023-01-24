@@ -185,8 +185,28 @@ public class SubSys_SwerveDrive extends SubsystemBase {
             getHeading(), 
             swerveModulePositions);  
 
+        // Front Left (Module 0)
         SmartDashboard.putNumber("FL_SteerSensor_AbsPos", swerveModules[0].getSteerSensorAbsolutePos());
         SmartDashboard.putNumber("FL_SteerSensor_Pos", swerveModules[0].getSteerSensorPos());
         SmartDashboard.putNumber("FL_SteerMotor_Pos", swerveModules[0].getSteerMotorPos());
+        SmartDashboard.putNumber("FL_SteerMotor_Angle", swerveModules[0].getSteerAngle().getDegrees());
+
+        // Front Right (Module 1)
+        SmartDashboard.putNumber("FR_SteerSensor_AbsPos", swerveModules[1].getSteerSensorAbsolutePos());
+        SmartDashboard.putNumber("FR_SteerSensor_Pos", swerveModules[1].getSteerSensorPos());
+        SmartDashboard.putNumber("FR_SteerMotor_Pos", swerveModules[1].getSteerMotorPos());
+        SmartDashboard.putNumber("FR_SteerMotor_Angle", swerveModules[1].getSteerAngle().getDegrees());
+
+        // Back Left (Module 2)
+        SmartDashboard.putNumber("BL_SteerSensor_AbsPos", swerveModules[2].getSteerSensorAbsolutePos());
+        SmartDashboard.putNumber("BL_SteerSensor_Pos", swerveModules[2].getSteerSensorPos());
+        SmartDashboard.putNumber("BL_SteerMotor_Pos", swerveModules[2].getSteerMotorPos());
+        SmartDashboard.putNumber("BL_SteerMotor_Angle", swerveModules[2].getSteerAngle().getDegrees());
+
+        // Back Right (Module 3)
+        SmartDashboard.putNumber("BR_SteerSensor_AbsPos", swerveModules[3].getSteerSensorAbsolutePos());
+        SmartDashboard.putNumber("BR_SteerSensor_Pos", swerveModules[3].getSteerSensorPos());
+        SmartDashboard.putNumber("BR_SteerMotor_Pos", swerveModules[3].getSteerMotorPos());
+        SmartDashboard.putNumber("BR_SteerMotor_Angle", swerveModules[3].getSteerAngle().getDegrees());
     }
 }
