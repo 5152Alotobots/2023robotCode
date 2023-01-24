@@ -35,7 +35,6 @@ import frc.robot.Library.DriveTrains.SwerveDrive.SwerveModules.CTREModuleState;
 import frc.robot.Library.DriveTrains.SwerveDrive.SwerveModules.SwerveModuleConstants;
 import frc.robot.Library.DriveTrains.SwerveDrive.SwerveModules.MK4i_FalconFalcon.MK4i_FalconFalcon_Module_Constants.*;
 import frc.robot.Library.MotorControllers.TalonFX.TalonFX_Conversions;
-import frc.robot.Library.MotorControllers.TalonSRX.TalonSRX_Conversions;
 
 /** Add your docs here. */
 public class MK4i_FalconFalcon_Module {
@@ -54,6 +53,11 @@ public class MK4i_FalconFalcon_Module {
         DriveMotor.driveKV,
         DriveMotor.driveKA);
 
+    /** MK4i_FalconFalcon_Module Constructor
+     * 
+     * @param moduleName String Name of Module FL,FR,BL,BR
+     * @param moduleConstants SwerveModuleConstants Contains CAN ID's and Basic Motor Settings
+     */
     public MK4i_FalconFalcon_Module(
         String moduleName,
         SwerveModuleConstants moduleConstants)
@@ -79,13 +83,19 @@ public class MK4i_FalconFalcon_Module {
 
     /* ***** Swerve Module Methods ***** */
 
+    /** setDesiredState
+     *   Sets the desired state of the Swerve Module
+     * 
+     * @param desiredState SwerveModuleState Desired state
+     * @param isOpenLoop boolean Open Loop control for Drive
+     */
     public void setDesiredState(
         SwerveModuleState desiredState,
         boolean isOpenLoop)
         {
             desiredState = CTREModuleState.optimize(desiredState, getState().angle); //Custom optimize command, since default WPILib optimize assumes continuous controller which CTRE is not
 
-            /** Drive Motor Command */
+            /* Drive Motor Command */
             // Open Loop 
             if(isOpenLoop){
                 double percentOutput = desiredState.speedMetersPerSecond / Constants.RobotSettings.DriveTrain.DriveTrainMaxSpd;
@@ -105,7 +115,7 @@ public class MK4i_FalconFalcon_Module {
                     driveMotorFF.calculate(desiredState.speedMetersPerSecond));
             }
 
-            /** Steer Motor Command
+            /* Steer Motor Command
              * Always Closed Loop
              * If Drive Speed Command is less than 1%, do not rotate to prevent jittering
             */
@@ -119,13 +129,16 @@ public class MK4i_FalconFalcon_Module {
             // Set Steet Motor Command to angle
             steerMotor.set(
                 ControlMode.Position,
-                TalonFX_Conversions.degreesToCANCoder(
-                    angle,
-                    1.0));
+                TalonFX_Conversions.degreesToTalonFX(angle));
+                
             // Update last angle         
             lastAngle = angle;
         }
 
+    /** getState
+     *    Gets the current state of the module
+     * @return SwerveModuleState State of the Module
+     */
     public SwerveModuleState getState(){
         /** Drive Wheel Velocity */
         double velocity = TalonFX_Conversions.falconToMPS(

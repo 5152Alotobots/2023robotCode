@@ -6,42 +6,45 @@ package frc.robot.Library.MotorControllers.TalonFX;
 
 /** Add your docs here. */
 public class TalonFX_Conversions {
-    /**
-     * @param counts Falcon Counts
+
+    /** talonFXToDegrees
+     * @param counts TalonFX Counts
+     * @return Degrees of Rotation of Mechanism
+     */
+    public static double talonFXToDegrees(double counts) {
+        // counts to degrees => 360/4096 = 0.087890625
+        return counts * 0.087890625;
+    }
+
+    /** degreesToTalonFX
+     * @param degrees Degrees of rotation of Mechanism
+     * @return TalonFX Counts
+     */
+    public static double degreesToTalonFX(double degrees) {
+        // degrees to counts => 4096/360 = 11.37778
+        double counts =  degrees * 11.37778;
+        return counts;
+    }
+
+    /** talonFXToDegrees_wGearRatio
+     * @param counts TalonFX Counts
      * @param gearRatio Gear Ratio between Falcon and Mechanism
      * @return Degrees of Rotation of Mechanism
      */
-    public static double falconToDegrees(double counts, double gearRatio) {
-        return counts * (360.0 / (gearRatio * 2048.0));
+    public static double talonFXToDegrees_wGearRatio(double counts, double gearRatio) {
+        // counts to degrees => 360/4096 = 0.087890625
+        return counts * 0.087890625 / gearRatio;
     }
 
-    /**
+    /** degreesToTalonFX_wGearRatio
      * @param degrees Degrees of rotation of Mechanism
      * @param gearRatio Gear Ratio between Falcon and Mechanism
-     * @return Falcon Counts
+     * @return TalonFX Counts
      */
-    public static double degreesToFalcon(double degrees, double gearRatio) {
-        double ticks =  degrees / (360.0 / (gearRatio * 2048.0));
-        return ticks;
-    }
-
-        /**
-     * @param counts CANCoder Counts
-     * @param gearRatio Gear Ratio between Falcon and Mechanism
-     * @return Degrees of Rotation of Mechanism
-     */
-    public static double CANcoderToDegrees(double counts, double gearRatio) {
-        return counts * (360.0 / (gearRatio * 2048.0));
-    }
-
-    /**
-     * @param degrees Degrees of rotation of Mechanism
-     * @param gearRatio Gear Ratio between Falcon and Mechanism
-     * @return Falcon Counts
-     */
-    public static double degreesToCANCoder(double degrees, double gearRatio) {
-        double ticks =  degrees / (360.0 / (gearRatio * 2048.0));
-        return ticks;
+    public static double degreesToTalonFX_wGearRatio(double degrees, double gearRatio) {
+        // degrees to counts => 4096/360 = 11.37778
+        double counts =  degrees * 11.37778 / gearRatio;
+        return counts;
     }
 
     /**
