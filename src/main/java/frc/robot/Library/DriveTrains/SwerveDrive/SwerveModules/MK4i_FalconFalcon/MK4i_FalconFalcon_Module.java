@@ -29,6 +29,7 @@ import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.math.util.Units;
 import frc.robot.Constants;
 import frc.robot.Library.DriveTrains.SwerveDrive.SwerveModules.CTREModuleState;
 import frc.robot.Library.DriveTrains.SwerveDrive.SwerveModules.SwerveModuleConstants;
@@ -172,13 +173,13 @@ public class MK4i_FalconFalcon_Module {
      */
     private void configSteerAngleEncoder(SwerveModuleConstants moduleConstants){
         steerAngleEncoder.configSensorInitializationStrategy(SensorInitializationStrategy.BootToAbsolutePosition);
-        steerAngleEncoder.configMagnetOffset(moduleConstants.angleOffset);
         steerAngleEncoder.configSensorDirection(moduleConstants.SteerCANcoderInvert);
+        steerAngleEncoder.setPosition(steerAngleEncoder.getAbsolutePosition()-this.strAngleOffset);
     }
     
     /** getSteerSensorAbsolutePos
      *   Returns the Absolute Position Measurement
-     * @return double Absolute Steer Sensor Positions Measurement  
+     * @return double Absolute Steer Sensor Positions Measurement (Degrees) 
      */
     public double getSteerSensorAbsolutePos(){
         return steerAngleEncoder.getAbsolutePosition();
@@ -186,7 +187,7 @@ public class MK4i_FalconFalcon_Module {
 
     /** getSteerSensorPos
      *   Returns the Position Measurement
-     * @return double Steer Sensor Position Measurement
+     * @return double Steer Sensor Position Measurement 
      */
     public double getSteerSensorPos(){
         return steerAngleEncoder.getPosition();
@@ -225,7 +226,7 @@ public class MK4i_FalconFalcon_Module {
     }
 
     /** getSteerMotorPos
-     *      Return Steer Motor Position (Need to specify PID?)
+     *      Return Steer Motor Position 
      * @return double Steer Motor Position (Raw sensor units)
      */
     public double getSteerMotorPos(){
@@ -237,6 +238,8 @@ public class MK4i_FalconFalcon_Module {
      * @return Rotation2d Steer Motor Angle
      */
     public Rotation2d getSteerAngle(){
-        return new Rotation2d();
+        double steerAngleRADS = Units.degreesToRadians(getSteerMotorPos()*360/4096);
+        Rotation2d steerAngle = new Rotation2d(steerAngleRADS);
+        return steerAngle;
     }
 }

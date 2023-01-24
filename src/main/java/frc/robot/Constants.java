@@ -150,6 +150,7 @@ public final class Constants {
     
   public static final class CAN_IDs {
     public static final int PDP_CAN_ID = 1;
+    public static final int PCM_CAN_ID = 2;
 
     public static final int Pigeon2_ID = 20;
             
@@ -165,8 +166,6 @@ public final class Constants {
     public static final int BackRightDriveMtr_CAN_ID = 60;        
     public static final int BackRightSteerMtr_CAN_ID = 61;
     public static final int BackRightSteerCANCoder_CAN_ID = 62;
-  
-
   }
 
   public static final class AnalogInput_IDs{
