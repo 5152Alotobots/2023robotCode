@@ -11,8 +11,6 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.util.Units;
-import frc.robot.RapidReact.Climber.ClimberConstants;
-import frc.robot.RapidReact.Climber.ClimberLift.ClimberLiftConstants;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -24,12 +22,12 @@ import frc.robot.RapidReact.Climber.ClimberLift.ClimberLiftConstants;
  */
 public final class Constants {
   public static final class RobotSettings{
-    public static final class Drive{
+    public static final class DriveTrain{
       // Drive SubSys
     
       // Drive Max Speeds
-      public static final double MaxDriveSubSysSpd   = 2.25;                  // m/s
-      public static final double MaxDriveSubSysAccel = 0.35;                  // m/s^2
+      public static final double DriveTrainMaxSpd   = 1.85;                  // m/s
+      public static final double DriveTrainMaxAccel = 0.35;                  // m/s^2
       public static final double MaxDriveSubSysRotSpeed = 270*Math.PI/180;    // rad/s
       public static final double MaxDriveSubSysRotAccel = 180*Math.PI/180;   // rad/s^2
     
@@ -84,36 +82,9 @@ public final class Constants {
         -19000};          // Hanger
     }
 
-    public static final class Climbing{
-      public static final double kExtend2Rung2Pos = 505; //mm (Test)
-      
-      public static final double kRung2toRung3Angle = 65; // Degrees
-        // 45+10 margin
-      public static final double kLift2Rung2StopPos = 
-        ClimberLiftConstants.ClimberLiftEncoder.kMinClimberLiftPos
-        +(kRung2toRung3Angle+90)*ClimberConstants.ClimberLiftRotator.kRotateDeg2Liftmm; // mm
-        // 2mm margin + MinLiftPos (Degrees from -90 to kRung2toRung3Angle) * kRotateDeg2Liftmm
- 
-      public static final double kTraverse2Rung3StopPos = 
-        ClimberLiftConstants.ClimberLiftEncoder.kMaxClimberLiftPos
-        +(kRung2toRung3Angle+90)*ClimberConstants.ClimberLiftRotator.kRotateDeg2Liftmm; // mm
-        // Max Lift Pos - 10mm margin
-
-      public static final double kRung3toRung4Angle = 285; // 250// Degrees
-        // 225+10 margin
-
-      public static final double kTraverse2Rung4StopPos =
-        ClimberLiftConstants.ClimberLiftEncoder.kMinClimberLiftPos
-        +(kRung3toRung4Angle+90)*ClimberConstants.ClimberLiftRotator.kRotateDeg2Liftmm-20; // mm
-        // 10 margin
-      public static final double kTraverseHangStopPos = 
-        kTraverse2Rung4StopPos + (360-kRung3toRung4Angle)*ClimberConstants.ClimberLiftRotator.kRotateDeg2Liftmm;
-    }
-
-    public static final class Limelight{
+   public static final class Limelight{
       public static final double kCameraHeight = Units.inchesToMeters(35);  // m
       public static final double kCameraAngle = 29.0; // Degrees
-      public static final double kTxOffset = 0.0; // Degrees
     }
   }
 
@@ -178,16 +149,16 @@ public final class Constants {
   }
     
   public static final class CAN_IDs {
-    public static final int PDP_ID = 1;
+    public static final int PDP_CAN_ID = 1;
         
     public static final int FrontLeftDriveMtr_ID = 2;
     public static final int FrontLeftSteerMtr_ID = 3;
     public static final int FrontRightDriveMtr_ID = 4;
     public static final int FrontRightSteerMtr_ID = 5;
-    public static final int RearRightDriveMtr_ID = 6;        
-    public static final int RearRightSteerMtr_ID = 7;
-    public static final int RearLeftDriveMtr_ID = 8;
-    public static final int RearLeftSteerMtr_ID = 9;       
+    public static final int BackRightDriveMtr_ID = 6;        
+    public static final int BackRightSteerMtr_ID = 7;
+    public static final int BackLeftDriveMtr_ID = 8;
+    public static final int BackLeftSteerMtr_ID = 9;       
         
     public static final int IntakeInNOutMtr_ID = 10;
     public static final int IntakeInNOutLwrMtr_ID = 16;

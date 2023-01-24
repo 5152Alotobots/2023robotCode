@@ -1,28 +1,23 @@
 <h1 align="center">2022-2023 season robot code (Team 5152)<br>
 
 [![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)](https://jdk.java.net/11/)
-[![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/FRC5152Alotobots/2022robotCode/actions)
-[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/FRC5152Alotobots/2022robotCode)
+[![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/FRC5152Alotobots/2023robotCode/actions)
+[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/FRC5152Alotobots/2023robotCode)
 
 <br>
     </h1>
 
 <!--The GitHub for FRC Team 5152.
-
 TODO:
 -Finish Orginization setup
 -Add CI/branch protection
-
 <div id="top"></div>
-
 <p align="center">
-    <a href="https://github.com/FRC5152Alotobots/2022robotCode/graphs/contributors" alt="Contributors">
+    <a href="https://github.com/FRC5152Alotobots/2023robotCode/graphs/contributors" alt="Contributors">
         <img src="https://img.shields.io/github/contributors/badges/shields" /></a>
-    <a href="https://github.com/FRC5152Alotobots/2022robotCode/pulse" alt="Activity">
+    <a href="https://github.com/FRC5152Alotobots/2023robotCode/pulse" alt="Activity">
         <img src="https://img.shields.io/github/commit-activity/m/badges/shields" /></a>
 </p>
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -37,11 +32,11 @@ TODO:
     The GitHub for FRC Team 5152.
     <br />
     <br />
-    <a href="https://github.com/FRC5152Alotobots/2022robotCode">View Code</a>
+    <a href="https://github.com/FRC5152Alotobots/2023robotCode">View Code</a>
     ·
-    <a href="https://github.com/FRC5152Alotobots/2022robotCode/issues">Report Bug</a>
+    <a href="https://github.com/FRC5152Alotobots/2023robotCode/issues">Report Bug</a>
     ·
-    <a href="https://github.com/FRC5152Alotobots/2022robotCode/issues">Request Feature</a>
+    <a href="https://github.com/FRC5152Alotobots/2023robotCode/issues">Request Feature</a>
   </p>
 </div>
 
@@ -85,7 +80,7 @@ TODO:
 
 <!-- GETTING STARTED -->
 ## Getting Started
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/FRC5152Alotobots/2022robotCode/)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/FRC5152Alotobots/2023robotCode/)
 
 
 ### Prerequisites
@@ -112,35 +107,18 @@ TODO:
   #Macos
   #Download installer and run
   ```
-  <!--
-* Php (8.0+) (Required for web-proxy)
-  ```sh
-  # Most Linux distros
-  sudo apt-get install php libapache2-mod-php php-mcrypt php-mysql
-  # Note: some distro's the above command does not work. In that case install it using Apache instead
-  ```
-  
-  * Doom3 Demo Pk4 file (Required for doom3wasm)
-  
-  a) Get the Doom 3 Demo from Fileplanet (or other sources): https://www.fileplanet.com/archive/p-15998/DOOM-3-Demo
-
-  b) Install the Demo (using wine on Linux)
-
-  c) Copy <D3Demo_install_path>/demo/demo00.pk4 to <ProjectAperture>/Games/d3wasm-min/data/demo folder
-  
--->
 ### Installation
 
 1. Clone the repo
    ```sh
-    git clone https://github.com/FRC5152Alotobots/2022robotCode.git
+    git clone https://github.com/FRC5152Alotobots/2023robotCode.git
    ```
-  
+
 2. Build
    ```sh
     # Right-click on the build.gradle file in the project hierarchy and select “Build Robot Code”
    ```
-  
+
 3. Deploy to robot
    ```sh
     # Right-click on the build.gradle file in the project hierarchy and select “Deploy to robot”
@@ -148,21 +126,19 @@ TODO:
 
 <!-- USAGE EXAMPLES
 ## Usage
-
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
 _For more examples, please refer to the [Documentation](https://example.com)_
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 -->
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Finish Orginization Setup
-- [ ] Protect branches
-- [ ] Get base code
+- [ ] Finish swerve drive code
+- [ ] Program hand
+- [ ] Program lift
+- [ ] Program computer vision/auton
 
-See the [open issues](https://github.com/FRC5152Alotobots/2022robotCode) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/FRC5152Alotobots/2023robotCode) for a full list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -171,9 +147,7 @@ Contributions are what make the open source community such an amazing place to l
 
 <!-- LICENSE
 ## License
-
 Distributed under the MIT License. See `LICENSE.txt` for more information.
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 -->
 
@@ -182,37 +156,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 
 
-Project Link: [https://github.com/SeanErn/ProjectAperture](https://github.com/FRC5152Alotobots/2022robotCode)<br>
+Project Link: [github.com](https://github.com/FRC5152Alotobots/2023robotCode)<br>
 Developer Emails:<br>
 Seanernstes@otsegops.org<br>
 Rowankortlandt@otsegops.org
 <!-- ACKNOWLEDGMENTS -->
-<!--
-## Acknowledgments
-
-* [yancharkin's spelunky classic ported to HTML 5](https://github.com/yancharkin/SpelunkyClassicHDhtml5)
-* [TheAlienDrew's Minecraft classic copy](https://github.com/TheAlienDrew/minecraft-classic)
-* [sparticle999's SpaceCompany game](https://github.com/sparticle999/SpaceCompany)
-* [LAX1DUDE's "eaglecraft" (Minecraft 1.5.2 web compilation)](https://github.com/LAX1DUDE/eaglercraft)
-* [othneildrew's README template](https://github.com/othneildrew/Best-README-Template)
--->
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-<!--
-[contributors-shield]: https://img.shields.io/github/contributors/SeanErn/ProjectAperture.svg?style=for-the-badge
-[contributors-url]: https://github.com/SeanErn/ProjectAperture/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/SeanErn/ProjectAperture.svg?style=for-the-badge
-[forks-url]: https://github.com/SeanErn/ProjectAperture/network/members
-[stars-shield]: https://img.shields.io/github/stars/SeanErn/ProjectAperture.svg?style=for-the-badge
-[stars-url]: https://github.com/SeanErn/ProjectAperture/stargazers
-[issues-shield]: https://img.shields.io/github/issues/SeanErn/ProjectAperture.svg?style=for-the-badge
-[issues-url]: https://github.com/SeanErn/ProjectAperture/issues
-[license-shield]: https://img.shields.io/github/license/SeanErn/ProjectAperture.svg?style=for-the-badge
-[license-url]: https://github.com/SeanErn/ProjectAperture/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[product-screenshot]: images/screenshot.png
--->
