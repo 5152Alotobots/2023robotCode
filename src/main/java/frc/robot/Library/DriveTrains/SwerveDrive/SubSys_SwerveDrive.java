@@ -53,6 +53,11 @@ public class SubSys_SwerveDrive extends SubsystemBase {
             new MK4i_FalconFalcon_Module("BR", SubSys_SwerveDrive_Constants.BR_constants)
         };
 
+        this.swerveOdometry.resetPosition(
+            new Rotation2d(), 
+            this.swerveModulePositionsInit, 
+            new Pose2d());
+
         this.rotationPt = new Translation2d(0,0);
 
         this.rotateLeftPtCmd_prev = false;
@@ -190,23 +195,36 @@ public class SubSys_SwerveDrive extends SubsystemBase {
         SmartDashboard.putNumber("FL_SteerSensor_Pos", swerveModules[0].getSteerSensorPos());
         SmartDashboard.putNumber("FL_SteerMotor_Pos", swerveModules[0].getSteerMotorPos());
         SmartDashboard.putNumber("FL_SteerMotor_Angle", swerveModules[0].getSteerAngle().getDegrees());
+        SmartDashboard.putNumber("FL_DriveSensor_Pos", swerveModules[0].getDriveMotorPosition());
+        SmartDashboard.putNumber("FL_DriveWheel_Revs", swerveModules[0].getDriveWheelRevs());
+        SmartDashboard.putNumber("FL_DriveWheel_Distance", swerveModules[0].getDriveMotorDistance());
+
+        SmartDashboard.putNumber("FL_SwrPosition_Distance",swerveModules[0].getPosition().distanceMeters);
+        SmartDashboard.putNumber("FL_SwrPosition_Angle",swerveModules[0].getPosition().angle.getDegrees());
 
         // Front Right (Module 1)
         SmartDashboard.putNumber("FR_SteerSensor_AbsPos", swerveModules[1].getSteerSensorAbsolutePos());
         SmartDashboard.putNumber("FR_SteerSensor_Pos", swerveModules[1].getSteerSensorPos());
         SmartDashboard.putNumber("FR_SteerMotor_Pos", swerveModules[1].getSteerMotorPos());
         SmartDashboard.putNumber("FR_SteerMotor_Angle", swerveModules[1].getSteerAngle().getDegrees());
+        SmartDashboard.putNumber("FR_DriveSensor_Pos", swerveModules[1].getDriveMotorPosition());
 
         // Back Left (Module 2)
         SmartDashboard.putNumber("BL_SteerSensor_AbsPos", swerveModules[2].getSteerSensorAbsolutePos());
         SmartDashboard.putNumber("BL_SteerSensor_Pos", swerveModules[2].getSteerSensorPos());
         SmartDashboard.putNumber("BL_SteerMotor_Pos", swerveModules[2].getSteerMotorPos());
         SmartDashboard.putNumber("BL_SteerMotor_Angle", swerveModules[2].getSteerAngle().getDegrees());
+        SmartDashboard.putNumber("BL_DriveSensor_Pos", swerveModules[2].getDriveMotorPosition());
 
         // Back Right (Module 3)
         SmartDashboard.putNumber("BR_SteerSensor_AbsPos", swerveModules[3].getSteerSensorAbsolutePos());
         SmartDashboard.putNumber("BR_SteerSensor_Pos", swerveModules[3].getSteerSensorPos());
         SmartDashboard.putNumber("BR_SteerMotor_Pos", swerveModules[3].getSteerMotorPos());
         SmartDashboard.putNumber("BR_SteerMotor_Angle", swerveModules[3].getSteerAngle().getDegrees());
+        SmartDashboard.putNumber("BR_DriveSensor_Pos", swerveModules[3].getDriveMotorPosition());
+
+        // Odometry
+        SmartDashboard.putNumber("Xdistance", swerveOdometry.getPoseMeters().getX());
+        SmartDashboard.putNumber("Ydistance", swerveOdometry.getPoseMeters().getY());
     }
 }

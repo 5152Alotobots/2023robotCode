@@ -26,9 +26,9 @@ public final class Constants {
       // Drive SubSys
     
       // Drive Max Speeds
-      public static final double DriveTrainMaxSpd   = 1.85;                  // m/s
+      public static final double DriveTrainMaxSpd   = 5;                  // m/s
       public static final double DriveTrainMaxAccel = 0.35;                  // m/s^2
-      public static final double MaxDriveSubSysRotSpeed = 270*Math.PI/180;    // rad/s
+      public static final double MaxDriveSubSysRotSpeed = 720*Math.PI/180;    // rad/s
       public static final double MaxDriveSubSysRotAccel = 180*Math.PI/180;   // rad/s^2
     
       // Drive Trajectory Max Speeds

@@ -65,7 +65,7 @@ public class SwrNStr_FalconPG71_Module {
             //configSteerMotor(moduleConstants);
 
         
-            this.strAngleOffset = moduleConstants.angleOffset;
+            this.strAngleOffset = moduleConstants.zeroAngle;
         
             /* Angle Encoder Config */
             //angleEncoder = new CANCoder(moduleConstants.cancoderID);

@@ -30,6 +30,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
 import frc.robot.Library.DriveTrains.SwerveDrive.SwerveModules.CTREModuleState;
 import frc.robot.Library.DriveTrains.SwerveDrive.SwerveModules.SwerveModuleConstants;
@@ -43,7 +44,7 @@ public class MK4i_FalconFalcon_Module {
     private TalonFX driveMotor;
     private TalonFX steerMotor;
     private CANCoder steerAngleEncoder;
-    private double strAngleOffset;  
+    private double strZeroAngle;  
     private double lastAngle;
 
     //public int moduleNumber;
@@ -63,6 +64,7 @@ public class MK4i_FalconFalcon_Module {
         SwerveModuleConstants moduleConstants)
         {
             this.moduleName = moduleName;
+            this.strZeroAngle = moduleConstants.zeroAngle;
 
             /* Drive Motor Config */
             this.driveMotor = new TalonFX(moduleConstants.driveMotorID);
@@ -75,8 +77,6 @@ public class MK4i_FalconFalcon_Module {
             /* Steer Motor Config */
             this.steerMotor = new TalonFX(moduleConstants.steerMotorID);
             configSteerMotor(moduleConstants);
-
-            this.strAngleOffset = moduleConstants.angleOffset;
         
             lastAngle = getState().angle.getDegrees();
         }
@@ -157,16 +157,13 @@ public class MK4i_FalconFalcon_Module {
     */
       public SwerveModulePosition getPosition(){
         SwerveModulePosition swrModulePosition;
-        double drvDistance;
-        Rotation2d strAngle;
+        
+        swrModulePosition = new SwerveModulePosition(
+            getDriveMotorDistance(),
+            getSteerAngle());
 
-        drvDistance = driveMotor.getSelectedSensorPosition();
-        strAngle = getSteerAngle();
-
-    swrModulePosition = new SwerveModulePosition(drvDistance, strAngle);
-
-    return swrModulePosition;
-  }
+      return swrModulePosition;
+    }
 
     /* ***** Drive Motor Methods ***** */  
   
@@ -177,6 +174,38 @@ public class MK4i_FalconFalcon_Module {
         driveMotor.setNeutralMode(MK4i_FalconFalcon_Module_Constants.DriveMotor.neutralMode);
         //driveMotor.setSelectedSensorPosition(0);
     }
+
+    /** getDriveMotorPosition
+     *   Get Drive Motor Sensor Position
+     * @return double Integrated Sensor Counts
+     */
+    public double getDriveMotorPosition(){
+        return driveMotor.getSelectedSensorPosition();
+    }
+
+    /** getDriveWheelRevs
+     *   Get Drive Motor 
+     * @return double Drive Wheel Revs
+     */
+    public double getDriveWheelRevs(){
+        
+        double wheelRevs = TalonFX_Conversions.talonFXToRevs_GearRatio(
+            getDriveMotorPosition(),
+            MK4i_FalconFalcon_Module_Constants.DriveMotor.invDriveGearRatio);
+        return wheelRevs;
+    }
+
+    /** getDriveWheelDistance
+     *   Get Drive Wheel Distance
+     * @return double Drive Wheel Distance (m)
+     */
+    public double getDriveMotorDistance(){
+        double wheelRevs = TalonFX_Conversions.talonFXToRevs_GearRatio(
+            getDriveMotorPosition(),
+            MK4i_FalconFalcon_Module_Constants.DriveMotor.invDriveGearRatio);
+        return wheelRevs*MK4i_FalconFalcon_Module_Constants.DriveMotor.driveWheelCircumference;
+    }
+
     
     /* ***** Steer Angle Encoder Methods ***** */
 
@@ -187,7 +216,10 @@ public class MK4i_FalconFalcon_Module {
     private void configSteerAngleEncoder(SwerveModuleConstants moduleConstants){
         steerAngleEncoder.configSensorInitializationStrategy(SensorInitializationStrategy.BootToAbsolutePosition);
         steerAngleEncoder.configSensorDirection(moduleConstants.SteerCANcoderInvert);
-        steerAngleEncoder.setPosition(steerAngleEncoder.getAbsolutePosition()-this.strAngleOffset);
+        double strAngleInit = steerAngleEncoder.getAbsolutePosition()-this.strZeroAngle;
+        SmartDashboard.putNumber("strAngleInit", strAngleInit);
+        //steerAngleEncoder.setPosition((steerAngleEncoder.getAbsolutePosition()-this.strZeroAngle));
+        steerAngleEncoder.setPosition(strAngleInit);
     }
     
     /** getSteerSensorAbsolutePos
@@ -236,6 +268,8 @@ public class MK4i_FalconFalcon_Module {
             FeedbackDevice.RemoteSensor0, 
             0, 
             0);
+
+        steerMotor.config_kP(0, 0.6, 0);
     }
 
     /** getSteerMotorPos

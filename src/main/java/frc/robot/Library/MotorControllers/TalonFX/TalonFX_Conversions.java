@@ -7,6 +7,9 @@ package frc.robot.Library.MotorControllers.TalonFX;
 /** Add your docs here. */
 public class TalonFX_Conversions {
 
+    public static final double TALONFX_CNTS_TO_REVS = 0.00048828125;   // 1/2048
+    public static final double REVS_TO_TALONFX_CNTS = 2048;
+
     /** talonFXToDegrees
      * @param counts TalonFX Counts
      * @return Degrees of Rotation of Mechanism
@@ -45,6 +48,31 @@ public class TalonFX_Conversions {
         // degrees to counts => 4096/360 = 11.37778
         double counts =  degrees * 11.37778 / gearRatio;
         return counts;
+    }
+
+    /** talonFXToRevs
+     *   Convert from TalonFX Sensor Counts to Revolutions
+     * @param counts double TalonFX Sensor Counts
+     * @return double Revolutions
+     */
+    public static double talonFXToRevs (double counts){
+        return counts*TALONFX_CNTS_TO_REVS;
+    }
+
+    /** talonFXToRevs_GearRatio
+     *   Convert from TalonFX Sensor Counts to Revolutions
+     * @param counts double TalonFX Sensor Counts
+     * @return double Revolutions
+    */
+
+    /** talonFXToRevs_GearRatio
+    *     Convert from TalonFX Counts to Revolutions through a gearbox
+    * @param counts double TalonFX Sensor Counts
+    * @param gearRatio double GearRatio
+    * @return double Revolutions
+    */
+    public static double talonFXToRevs_GearRatio (double counts, double gearRatio){
+        return counts*TALONFX_CNTS_TO_REVS*gearRatio;
     }
 
     /**

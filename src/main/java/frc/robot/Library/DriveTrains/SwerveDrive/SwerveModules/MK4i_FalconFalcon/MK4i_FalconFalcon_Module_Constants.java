@@ -68,14 +68,15 @@ public final class MK4i_FalconFalcon_Module_Constants {
     public static final class DriveMotor {
 
         /** Neutral Mode */
-        public static final NeutralMode neutralMode = NeutralMode.Brake; 
+        public static final NeutralMode neutralMode = NeutralMode.Coast; 
 
         /** Drive Motor Wheel Circumference  */
-        public static final double driveWheelDiameter = Units.inchesToMeters(3.94);  // meters
+        public static final double driveWheelDiameter = Units.inchesToMeters(4.0);  // meters
         public static final double driveWheelCircumference = driveWheelDiameter * Math.PI; // meters
 
         /** Drive Motor Gear Ratio */
-        public static final double driveGearRatio = (6.86 / 1.0); //6.86:1
+        public static final double driveGearRatio = (6.75);             // 6.75:1
+        public static final double invDriveGearRatio = (0.148148148);   // 1:6.75
 
         /** Feedforward Characterization Values */
         public static final double driveKS = (0.667 / 12); //divide by 12 to convert from volts to percent output for CTRE
