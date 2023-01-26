@@ -81,7 +81,9 @@ public class MK4i_FalconFalcon_Module {
             lastAngle = getState().angle.getDegrees();
         }
 
-    /* ***** Swerve Module Methods ***** */
+    /***********************************************************************************/
+    /* ***** Swerve Module Methods *****                                               */
+    /***********************************************************************************/
 
     /** setDesiredState
      *   Sets the desired state of the Swerve Module
@@ -165,8 +167,15 @@ public class MK4i_FalconFalcon_Module {
       return swrModulePosition;
     }
 
-    /* ***** Drive Motor Methods ***** */  
-  
+    /***********************************************************************************/
+    /* ***** Drive Motor Methods *****                                                 */  
+    /***********************************************************************************/
+
+    /** configDriveMotor
+     *    Configurations for the Drive Motor are defined in SubSys_SwerveDrive_Constants.java
+     *    This is basic information like Motor and Sensor CAN ID's, Inverted and Steer Zero Angle
+     * @param moduleConstants Module Constants
+     */
     private void configDriveMotor(SwerveModuleConstants moduleConstants){        
         driveMotor.configFactoryDefault();
         //driveMotor.configAllSettings(MK4i_FalconFalcon_Module_Constants.DriveTalonFXConfig);
@@ -206,9 +215,9 @@ public class MK4i_FalconFalcon_Module {
         return wheelRevs*MK4i_FalconFalcon_Module_Constants.DriveMotor.driveWheelCircumference;
     }
 
-    
-    /* ***** Steer Angle Encoder Methods ***** */
-
+    /***********************************************************************************/
+    /* ***** Steer Angle Encoder Methods *****                                         */
+    /***********************************************************************************/
     /**  configSteerAngleEncoder
      *      Configure Steer Angle Encoder
      * @param moduleConstants
@@ -238,8 +247,9 @@ public class MK4i_FalconFalcon_Module {
         return steerAngleEncoder.getPosition();
     }
 
-    /* ***** Steer Motor Methods ***** */
-    
+    /***********************************************************************************/
+    /* ***** Steer Motor Methods *****                                                 */
+    /***********************************************************************************/
     /** configSteerMotor
      * 
      * @param moduleConstants
