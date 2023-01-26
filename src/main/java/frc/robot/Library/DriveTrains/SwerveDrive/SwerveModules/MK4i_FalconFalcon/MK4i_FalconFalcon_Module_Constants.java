@@ -6,6 +6,7 @@ package frc.robot.Library.DriveTrains.SwerveDrive.SwerveModules.MK4i_FalconFalco
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.RemoteFeedbackDevice;
 import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 import com.ctre.phoenix.motorcontrol.can.TalonFXConfiguration;
 import com.ctre.phoenix.sensors.SensorInitializationStrategy;
@@ -18,23 +19,20 @@ import edu.wpi.first.math.util.Units;
  */
 public final class MK4i_FalconFalcon_Module_Constants {
     
-    public TalonFXConfiguration DriveTalonFXConfig;
-    public TalonFXConfiguration SteerTalonFXConfig;
+    public static TalonFXConfiguration DriveTalonFXConfig;
+    public static TalonFXConfiguration SteerTalonFXConfig;
 
     public MK4i_FalconFalcon_Module_Constants(){      
 
-       
-        /* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
         /** Swerve Drive Motor Configuration */
+        DriveTalonFXConfig = new TalonFXConfiguration();
 
-        this.DriveTalonFXConfig = new TalonFXConfiguration();
-
-        this.DriveTalonFXConfig.initializationStrategy = SensorInitializationStrategy.BootToZero;
+        DriveTalonFXConfig.initializationStrategy = SensorInitializationStrategy.BootToZero;
         
-        this.DriveTalonFXConfig.slot0.kP = 0.0;
-        this.DriveTalonFXConfig.slot0.kI = 0.0;
-        this.DriveTalonFXConfig.slot0.kD = 0.0;
-        this.DriveTalonFXConfig.slot0.kF = 0.0;        
+        DriveTalonFXConfig.slot0.kP = 0.0;
+        DriveTalonFXConfig.slot0.kI = 0.0;
+        DriveTalonFXConfig.slot0.kD = 0.0;
+        DriveTalonFXConfig.slot0.kF = 0.0;        
         
         SupplyCurrentLimitConfiguration driveSupplyLimit = new SupplyCurrentLimitConfiguration(
             true, 
@@ -42,15 +40,11 @@ public final class MK4i_FalconFalcon_Module_Constants {
             60, 
             0.1);
         
-        this.DriveTalonFXConfig.supplyCurrLimit = driveSupplyLimit;
+        DriveTalonFXConfig.supplyCurrLimit = driveSupplyLimit;
         
-        this.DriveTalonFXConfig.openloopRamp = 0.25;
-        this.DriveTalonFXConfig.closedloopRamp = 0.0;
+        DriveTalonFXConfig.openloopRamp = 0.25;
+        DriveTalonFXConfig.closedloopRamp = 0.0;
 
-        /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
- 
-        
-        /* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
         /** Steer Motor Configuration */
         SteerTalonFXConfig = new TalonFXConfiguration();
 
@@ -69,15 +63,6 @@ public final class MK4i_FalconFalcon_Module_Constants {
         
         SteerTalonFXConfig.openloopRamp = 0.25;
         SteerTalonFXConfig.closedloopRamp = 0.0;
-        /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
-    }
-
-    public TalonFXConfiguration getDriveMotorConfig(){
-        return this.DriveTalonFXConfig;
-    }
-
-    public TalonFXConfiguration getSteerMotorConfig(){
-        return this.SteerTalonFXConfig;
     }
 
     public static final class DriveMotor {
@@ -112,6 +97,9 @@ public final class MK4i_FalconFalcon_Module_Constants {
         public static final double selectedFeedbackCoefficient = 1;
         public static final boolean sensorPhase = false;
         public static final boolean feedbackNotContinuous = true;
+        
+        /** Motor Feedback Counts Per Motor Revolution */
+        public static final int sensorCntsPerRev = 1024;
     }
 
     public static final class SteerCANcoder {
