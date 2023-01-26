@@ -46,7 +46,6 @@ public class MK4i_FalconFalcon_Module {
     private CANCoder steerAngleEncoder;
     private double strZeroAngle;  
     private double lastAngle;
-    private MK4i_FalconFalcon_Module_Constants mk4i_Module_Constants;
 
     //public int moduleNumber;
 
@@ -66,7 +65,6 @@ public class MK4i_FalconFalcon_Module {
         {
             this.moduleName = moduleName;
             this.strZeroAngle = moduleConstants.zeroAngle;
-            this.mk4i_Module_Constants = new MK4i_FalconFalcon_Module_Constants();
 
             /* Drive Motor Config */
             this.driveMotor = new TalonFX(moduleConstants.driveMotorID);
@@ -180,9 +178,10 @@ public class MK4i_FalconFalcon_Module {
      */
     private void configDriveMotor(SwerveModuleConstants moduleConstants){        
         driveMotor.configFactoryDefault();
-        driveMotor.configAllSettings(this.mk4i_Module_Constants.getDriveMotorConfig());
+        //driveMotor.configAllSettings(MK4i_FalconFalcon_Module_Constants.DriveTalonFXConfig);
         driveMotor.setInverted(moduleConstants.driveMotorInvert);
         driveMotor.setNeutralMode(MK4i_FalconFalcon_Module_Constants.DriveMotor.neutralMode);
+        //driveMotor.setSelectedSensorPosition(0);
     }
 
     /** getDriveMotorPosition
@@ -214,10 +213,6 @@ public class MK4i_FalconFalcon_Module {
             getDriveMotorPosition(),
             MK4i_FalconFalcon_Module_Constants.DriveMotor.invDriveGearRatio);
         return wheelRevs*MK4i_FalconFalcon_Module_Constants.DriveMotor.driveWheelCircumference;
-    }
-
-    public void setDriveMotorPos(double counts){
-        driveMotor.setSelectedSensorPosition(counts, 0, 0);
     }
 
     /***********************************************************************************/
@@ -261,7 +256,7 @@ public class MK4i_FalconFalcon_Module {
      */
     private void configSteerMotor(SwerveModuleConstants moduleConstants){
         steerMotor.configFactoryDefault();
-        steerMotor.configAllSettings(this.mk4i_Module_Constants.getSteerMotorConfig());
+        //steerMotor.configAllSettings(MK4i_FalconFalcon_Module_Constants.SteerTalonFXConfig);
         steerMotor.setInverted(moduleConstants.steerMotorInvert);
         steerMotor.setNeutralMode(MK4i_FalconFalcon_Module_Constants.SteerMotor.neutralMode);
 
