@@ -8,11 +8,13 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import frc.robot.ChargedUp.DriverStation.SubSys_DriverStation;
+import frc.robot.ChargedUp.MecanumDrive.Subsys_MecanumDrive;
 import frc.robot.Library.DriveTrains.SubSys_DriveTrain;
 import frc.robot.Library.DriveTrains.Cmds_SubSys_DriveTrain.Cmd_SubSys_DriveTrain_JoysticDefault;
 import frc.robot.Library.Gyroscopes.Pigeon2.SubSys_PigeonGyro;
@@ -45,7 +47,7 @@ public class RobotContainer {
   private final SubSys_LimeLight limeLightSubSys = new SubSys_LimeLight();
 
   // ---- Drive Subsystem (Swerve)
-  public final SubSys_DriveTrain driveSubSys = new SubSys_DriveTrain(gyroSubSys);
+  public final Subsys_MecanumDrive driveSubSys = new Subsys_MecanumDrive();
 
   /*
   ***** Charged Up Componentes
@@ -85,15 +87,19 @@ public class RobotContainer {
     */
 
     // ---- Drive Subsystem Default Command
-    driveSubSys
-      .setDefaultCommand(new Cmd_SubSys_DriveTrain_JoysticDefault(
-        driveSubSys,
-        () -> driverStation.DriveFwdAxis(),
-        () -> driverStation.DriveStrAxis(),
-        () -> driverStation.DriveRotAxis(),
-        true,
-        () -> driverStation.RotateLeftPt(),
-        () -> driverStation.RotateRightPt()));
+    driveSubSys.setDefaultCommand(new ());
+
+      
+      
+      // new Cmd_SubSys_DriveTrain_JoysticDefault(
+            //   driveSubSys,
+            //   () -> driverStation.DriveFwdAxis(),
+            //   () -> driverStation.DriveStrAxis(),
+            //   () -> driverStation.DriveRotAxis(),
+            //   true,
+            //   () -> driverStation.RotateLeftPt(),
+              //  () -> driverStation.RotateRightPt())
+         
 
     // Sendable Chooser
     //m_chooser.setDefaultOption("Auto_BasicRevHighGoalRev_Cmd", m_Auto_BasicRevHighGoalRev_Cmd);
@@ -119,12 +125,12 @@ public class RobotContainer {
    * ({@link edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then
    * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {
+   private void configureButtonBindings() {
  
     // Gyro Reset Command Button
-    driverStation.GyroResetButton.onTrue(
-        new InstantCommand(driveSubSys::zeroGyro, driveSubSys));
-  }
+    // driverStation.GyroResetButton.onTrue(
+        // new InstantCommand(driveSubSys::zeroGyro, driveSubSys));
+   }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
