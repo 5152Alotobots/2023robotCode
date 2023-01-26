@@ -59,7 +59,9 @@ public class Subsys_MecanumDrive extends SubsystemBase {
   /** Sets the front left drive MotorController to a voltage. */
   public Subsys_MecanumDrive() {
     m_frontRightMotor.setInverted(true);
+    m_frontLeftMotor.setInverted(true);
     m_rearLeftMotor.setInverted(true);
+    m_rearRightMotor.setInverted(false);
   }
   //initialize Mecanum Drive 
   //TODO see if this is correct

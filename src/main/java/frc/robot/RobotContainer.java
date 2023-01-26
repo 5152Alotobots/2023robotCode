@@ -19,6 +19,8 @@ import frc.robot.Library.DriveTrains.SubSys_DriveTrain;
 import frc.robot.Library.DriveTrains.Cmds_SubSys_DriveTrain.Cmd_SubSys_DriveTrain_JoysticDefault;
 import frc.robot.Library.Gyroscopes.Pigeon2.SubSys_PigeonGyro;
 import frc.robot.Library.Vision.Limelight.SubSys_LimeLight;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -52,7 +54,7 @@ public class RobotContainer {
   /*
   ***** Charged Up Componentes
   */
- 
+  XboxController m_driverController = new XboxController(0); 
   // ---- Driver Station
   public final SubSys_DriverStation driverStation = new SubSys_DriverStation();
   // SetUp Auto
@@ -78,6 +80,7 @@ public class RobotContainer {
    */
   public RobotContainer() {
     // Configure the button bindings
+    
     configureButtonBindings();
 
     // Configure default commands
@@ -87,8 +90,18 @@ public class RobotContainer {
     */
 
     // ---- Drive Subsystem Default Command
-    driveSubSys.setDefaultCommand(new ());
-
+    driveSubSys.setDefaultCommand(
+      // A split-stick arcade command, with forward/backward controlled by the left
+      // hand, and turning controlled by the right.
+      new RunCommand(
+          () ->
+              driveSubSys.MecanumDrive(
+                  m_driverController.getLeftY(),
+                  m_driverController.getLeftX(),
+                  m_driverController.getRightX()
+                ),
+          driveSubSys));
+}
       
       
       // new Cmd_SubSys_DriveTrain_JoysticDefault(
@@ -116,8 +129,8 @@ public class RobotContainer {
     //m_chooser.addOption("HighshotAuto", m_LeftCenterHigh_Cmd);
     
 
-    SmartDashboard.putData(m_chooser);
-  }
+    // SmartDashboard.putData(m_chooser);
+
 
   /**
    * Use this method to define your button->command mappings. Buttons can be
@@ -138,10 +151,10 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    // An ExampleCommand will run in autonomous
-    //m_DriveSubSys.resetOdometry(new Pose2d(0, 0, new Rotation2d(0)));
+  //   // An ExampleCommand will run in autonomous
+  //   //m_DriveSubSys.resetOdometry(new Pose2d(0, 0, new Rotation2d(0)));
     
-    //return m_BasicAutoCmd;
+  //   //return m_BasicAutoCmd;
     return m_chooser.getSelected();
   }
 }
