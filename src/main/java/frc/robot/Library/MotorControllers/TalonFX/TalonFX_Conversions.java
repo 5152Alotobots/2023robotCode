@@ -10,14 +10,15 @@ public class TalonFX_Conversions {
     public static final double TALONFX_CNTS_TO_REVS = 0.00048828125;   // 1/2048
     public static final double REVS_TO_TALONFX_CNTS = 2048;
 
+
     /** talonFXToDegrees
      * @param counts TalonFX Counts
      * @return Degrees of Rotation of Mechanism
      */
-    public static double talonFXToDegrees(double counts) {
-        // counts to degrees => 360/4096 = 0.087890625
-        return counts * 0.087890625;
-    }
+    //public static double talonFXToDegrees(double counts) {
+    //    // counts to degrees => 360/4096 = 0.087890625
+    //    return counts * 0.087890625;
+    //}
 
     /** degreesToTalonFX
      * @param degrees Degrees of rotation of Mechanism
@@ -34,21 +35,21 @@ public class TalonFX_Conversions {
      * @param gearRatio Gear Ratio between Falcon and Mechanism
      * @return Degrees of Rotation of Mechanism
      */
-    public static double talonFXToDegrees_wGearRatio(double counts, double gearRatio) {
-        // counts to degrees => 360/4096 = 0.087890625
-        return counts * 0.087890625 / gearRatio;
-    }
+    //public static double talonFXToDegrees_wGearRatio(double counts, double gearRatio) {
+    //    // counts to degrees => 360/4096 = 0.087890625
+    //    return counts * 0.087890625 / gearRatio;
+    //}
 
     /** degreesToTalonFX_wGearRatio
      * @param degrees Degrees of rotation of Mechanism
      * @param gearRatio Gear Ratio between Falcon and Mechanism
      * @return TalonFX Counts
      */
-    public static double degreesToTalonFX_wGearRatio(double degrees, double gearRatio) {
-        // degrees to counts => 4096/360 = 11.37778
-        double counts =  degrees * 11.37778 / gearRatio;
-        return counts;
-    }
+    //public static double degreesToTalonFX_wGearRatio(double degrees, double gearRatio) {
+    //    // degrees to counts => 4096/360 = 11.37778
+    //    double counts =  degrees * 11.37778 / gearRatio;
+    //    return counts;
+    //}
 
     /** talonFXToRevs
      *   Convert from TalonFX Sensor Counts to Revolutions
@@ -58,12 +59,6 @@ public class TalonFX_Conversions {
     public static double talonFXToRevs (double counts){
         return counts*TALONFX_CNTS_TO_REVS;
     }
-
-    /** talonFXToRevs_GearRatio
-     *   Convert from TalonFX Sensor Counts to Revolutions
-     * @param counts double TalonFX Sensor Counts
-     * @return double Revolutions
-    */
 
     /** talonFXToRevs_GearRatio
     *     Convert from TalonFX Counts to Revolutions through a gearbox
