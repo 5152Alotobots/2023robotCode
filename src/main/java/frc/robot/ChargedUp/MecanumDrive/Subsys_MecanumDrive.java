@@ -37,7 +37,7 @@ import org.ejml.equation.Variable;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class Subsys_MecanumDrive extends SubsystemBase {
+public class SubSys_MecanumDrive extends SubsystemBase {
 
   private final WPI_VictorSPX m_frontLeftMotor = new WPI_VictorSPX(Const_MecanumDrive.k_FrontLeftMotorPort);
   private final WPI_VictorSPX m_rearLeftMotor = new WPI_VictorSPX(Const_MecanumDrive.k_RearLeftMotorPort);
@@ -48,7 +48,7 @@ public class Subsys_MecanumDrive extends SubsystemBase {
   
   private SubSys_PigeonGyro gyroSubSys; 
 
-  public Subsys_MecanumDrive() {
+  public SubSys_MecanumDrive() {
     m_frontRightMotor.setInverted(true);
     m_frontLeftMotor.setInverted(true);
     m_rearLeftMotor.setInverted(true);
@@ -89,27 +89,7 @@ MecanumDriveKinematics m_kinematics = new MecanumDriveKinematics(
   }
 
 
-  /*** Initializes Shuffleboard motor objects */
-  // public void initShuffleboard(){
-  //   //plot mecananum drive to shuffleboard
-  //   ShuffleboardTab tab = Shuffleboard.getTab("Robot");
-  //   tab.addDouble("Front Left Speed", () -> m_frontLeftMotor.get())
-  //   .withWidget(BuiltInWidgets.kNumberBar)
-  //   .withPosition(0, 0);
-  //   tab.addDouble("Front Right Speed", () -> m_frontRightMotor.get())
-  //   .withWidget(BuiltInWidgets.kNumberBar)
-  //   .withPosition(1, 0);
-  //   tab.addDouble("Rear Left Speed", () -> m_rearLeftMotor.get())
-  //   .withWidget(BuiltInWidgets.kNumberBar)
-  //   .withPosition(0, 1);
-  //   tab.addDouble("Rear Right Speed", () -> m_rearRightMotor.get())
-  //   .withWidget(BuiltInWidgets.kNumberBar)
-  //   .withPosition(1, 1);
-  // }
 
-  /** PID CONTROLLERS */
-  // public PIDController controller = new PIDController(DriveConstants.k_driveLinKp, DriveConstants.k_driveLinKi, DriveConstants.k_driveLinKd);
-  // public PIDController turnController = new PIDController(DriveConstants.k_driveAngKp, DriveConstants.k_driveAngKi, DriveConstants.k_driveAngKd);
   //*Unused Encoder Stuff */
   //  // private final Encoder m_frontLeftEncoder =
   //     new Encoder(
