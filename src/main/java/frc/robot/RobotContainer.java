@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import frc.robot.ChargedUp.DriverStation.SubSys_DriverStation;
-import frc.robot.ChargedUp.MecanumDrive.SubSys_MecanumDrive;
+import frc.robot.ChargedUp.MecanumDrive.Subsys_MecanumDrive;
 import frc.robot.ChargedUp.Hand.SubSys_Hand;
 import frc.robot.Library.DriveTrains.SubSys_DriveTrain;
 import frc.robot.Library.DriveTrains.Cmds_SubSys_DriveTrain.Cmd_SubSys_DriveTrain_JoysticDefault;
@@ -42,7 +42,7 @@ public class RobotContainer {
 
   private final SubSys_LimeLight limeLightSubSys = new SubSys_LimeLight();
 
-  public final SubSys_MecanumDrive MecanumDriveSubSys = new SubSys_MecanumDrive();
+  public final Subsys_MecanumDrive MecanumDriveSubSys = new Subsys_MecanumDrive();
 
   XboxController m_driverController = new XboxController(0); 
 
