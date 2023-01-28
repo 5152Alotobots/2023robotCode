@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import frc.robot.ChargedUp.ChargeStation.Cmd_AutoBalance;
 import frc.robot.ChargedUp.DriverStation.SubSys_DriverStation;
 import frc.robot.ChargedUp.Hand.SubSys_Hand;
 import frc.robot.Library.DriveTrains.SubSys_DriveTrain;
@@ -137,7 +138,8 @@ public class RobotContainer {
         new InstantCommand(handSubSys::OpenHand, handSubSys));
     driverStation.CloseHandButton.onTrue(
         new InstantCommand(handSubSys::CloseHand, handSubSys));
-    
+    driverStation.AutoBalanceButton.whileTrue(
+      new Cmd_AutoBalance(gyroSubSys, driveSubSys));
   }
 
   /**

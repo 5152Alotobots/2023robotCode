@@ -33,6 +33,8 @@ public class SubSys_PigeonGyro extends SubsystemBase {
 
     // Display
     SmartDashboard.putNumber("GyroYaw", m_Pigeon2Gyro.getYaw());
+    SmartDashboard.putNumber("GyroPitch", m_Pigeon2Gyro.getPitch());
+    SmartDashboard.putNumber("GyroRoll", m_Pigeon2Gyro.getRoll());
     SmartDashboard.putNumber("GyroCompass", m_Pigeon2Gyro.getCompassHeading());
   }
 
@@ -40,8 +42,16 @@ public class SubSys_PigeonGyro extends SubsystemBase {
    * Return Raw Gyro Angle
    * @return Raw Angle double raw Gyro Angle
    */
-  public double getRawGyroAngle(){
+  public double getRawGyroYaw(){
     return m_Pigeon2Gyro.getYaw();
+  }
+
+  public double getRawGyroPitch(){
+    return m_Pigeon2Gyro.getPitch();
+  }
+
+  public double getRawGyroRoll(){
+    return m_Pigeon2Gyro.getRoll();
   }
 
   /**
@@ -74,4 +84,11 @@ public class SubSys_PigeonGyro extends SubsystemBase {
     m_Pigeon2Gyro.setYaw(yawDegrees);
   }
 
+  //TODO: BALANCE VALUES: +-4=flat >+-10 unbalanced
+
+  public Boolean isBalanced(){
+    var isBal = false;
+    if (m_Pigeon2Gyro.getRoll() > 4 || m_Pigeon2Gyro.getRoll() < -4) isBal = true;
+    return isBal;
+  }
 }
