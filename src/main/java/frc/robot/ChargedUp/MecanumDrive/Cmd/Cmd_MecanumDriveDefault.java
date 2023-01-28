@@ -8,11 +8,11 @@ import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.ChargedUp.MecanumDrive.SubSys_MecanumDrive;
+import frc.robot.ChargedUp.MecanumDrive.Subsys_MecanumDrive;
 
 public class Cmd_MecanumDriveDefault extends CommandBase {  
   //Declare Variables 
-  private final SubSys_MecanumDrive m_MecanumDrive;
+  private final Subsys_MecanumDrive m_MecanumDrive;
   private DoubleSupplier lefty;
   private DoubleSupplier leftx;
   private DoubleSupplier rightx;
@@ -22,7 +22,7 @@ public class Cmd_MecanumDriveDefault extends CommandBase {
    * @param TestFalconSubsystem
    * @param Joystick_DS 
    */
-  public Cmd_MecanumDriveDefault( SubSys_MecanumDrive DriveSys, DoubleSupplier lefty, DoubleSupplier leftx, DoubleSupplier rightx) {
+  public Cmd_MecanumDriveDefault( Subsys_MecanumDrive DriveSys, DoubleSupplier lefty, DoubleSupplier leftx, DoubleSupplier rightx) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_MecanumDrive = DriveSys;
     addRequirements(m_MecanumDrive);
