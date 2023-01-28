@@ -9,6 +9,9 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 import com.ctre.phoenix.motorcontrol.can.TalonFXConfiguration;
 import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
+import com.ctre.phoenix.motorcontrol.RemoteFeedbackDevice;
+import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
+import com.ctre.phoenix.motorcontrol.can.TalonFXConfiguration;
 import com.ctre.phoenix.sensors.SensorInitializationStrategy;
 
 import edu.wpi.first.math.util.Units;
@@ -29,7 +32,7 @@ public final class MK4i_FalconFalcon_Module_Constants {
 
         DriveTalonFXConfig.initializationStrategy = SensorInitializationStrategy.BootToZero;
         
-        DriveTalonFXConfig.slot0.kP = 0.10;
+        DriveTalonFXConfig.slot0.kP = 0.0;
         DriveTalonFXConfig.slot0.kI = 0.0;
         DriveTalonFXConfig.slot0.kD = 0.0;
         DriveTalonFXConfig.slot0.kF = 0.0;        
@@ -50,7 +53,7 @@ public final class MK4i_FalconFalcon_Module_Constants {
 
         SteerTalonFXConfig.slot0.kP = 0.6;
         SteerTalonFXConfig.slot0.kI = 0.0;
-        SteerTalonFXConfig.slot0.kD = 12.0;
+        SteerTalonFXConfig.slot0.kD = 0.0;
         SteerTalonFXConfig.slot0.kF = 0.0;
         
         SupplyCurrentLimitConfiguration steerSupplyLimit = new SupplyCurrentLimitConfiguration(
@@ -71,11 +74,12 @@ public final class MK4i_FalconFalcon_Module_Constants {
         public static final NeutralMode neutralMode = NeutralMode.Brake; 
 
         /** Drive Motor Wheel Circumference  */
-        public static final double driveWheelDiameter = Units.inchesToMeters(3.94);  // meters
+        public static final double driveWheelDiameter = Units.inchesToMeters(4.0);  // meters
         public static final double driveWheelCircumference = driveWheelDiameter * Math.PI; // meters
 
         /** Drive Motor Gear Ratio */
-        public static final double driveGearRatio = (6.86 / 1.0); //6.86:1
+        public static final double driveGearRatio = (6.75);             // 6.75:1
+        public static final double invDriveGearRatio = (0.148148148);   // 1:6.75
 
         /** Feedforward Characterization Values */
         public static final double driveKS = (0.667 / 12); //divide by 12 to convert from volts to percent output for CTRE
@@ -91,13 +95,18 @@ public final class MK4i_FalconFalcon_Module_Constants {
         /** Steer Motor Gear Ratio */
         public static final double steerGearRatio = (6.0 / 1.0);  // 6.0:1
 
-        /** MA3 Steer Encoder */
-        public static final FeedbackDevice selectedFeedbackSensor = FeedbackDevice.Analog;
+        /** Internal Steer Encoder */
+        public static final FeedbackDevice selectedFeedbackSensor = FeedbackDevice.IntegratedSensor;
         public static final double selectedFeedbackCoefficient = 1;
         public static final boolean sensorPhase = false;
         public static final boolean feedbackNotContinuous = true;
         
         /** Motor Feedback Counts Per Motor Revolution */
         public static final int sensorCntsPerRev = 1024;
+    }
+
+    public static final class SteerCANcoder {
+        public static final boolean sensorPhase = true;
+        public static final double selectedFeedbackCoefficient = 1;
     }
 }

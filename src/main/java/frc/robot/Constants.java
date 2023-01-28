@@ -26,9 +26,9 @@ public final class Constants {
       // Drive SubSys
     
       // Drive Max Speeds
-      public static final double DriveTrainMaxSpd   = 1.85;                  // m/s
+      public static final double DriveTrainMaxSpd   = 5;                  // m/s
       public static final double DriveTrainMaxAccel = 0.35;                  // m/s^2
-      public static final double MaxDriveSubSysRotSpeed = 270*Math.PI/180;    // rad/s
+      public static final double MaxDriveSubSysRotSpeed = 720*Math.PI/180;    // rad/s
       public static final double MaxDriveSubSysRotAccel = 180*Math.PI/180;   // rad/s^2
     
       // Drive Trajectory Max Speeds
@@ -150,26 +150,22 @@ public final class Constants {
     
   public static final class CAN_IDs {
     public static final int PDP_CAN_ID = 1;
-        
-    public static final int FrontLeftDriveMtr_ID = 2;
-    public static final int FrontLeftSteerMtr_ID = 3;
-    public static final int FrontRightDriveMtr_ID = 4;
-    public static final int FrontRightSteerMtr_ID = 5;
-    public static final int BackRightDriveMtr_ID = 6;        
-    public static final int BackRightSteerMtr_ID = 7;
-    public static final int BackLeftDriveMtr_ID = 8;
-    public static final int BackLeftSteerMtr_ID = 9;       
-        
-    public static final int IntakeInNOutMtr_ID = 10;
-    public static final int IntakeInNOutLwrMtr_ID = 16;
-    public static final int IntakeArmMtr_ID = 11;
-    public static final int IntakeArmEnc_ID = 14;
-        
-    public static final int ClimberLiftMtr_ID = 12;
-    public static final int ClimberRotatorMtr_ID = 13;
-    public static final int ClimberLiftEnc_ID = 15;
+    public static final int PCM_CAN_ID = 2;
 
     public static final int Pigeon2_ID = 20;
+            
+    public static final int FrontLeftDriveMtr_CAN_ID = 51;
+    public static final int FrontLeftSteerMtr_CAN_ID = 52;
+    public static final int FrontLeftSteerCANCoder_CAN_ID = 53;
+    public static final int FrontRightDriveMtr_CAN_ID = 54;
+    public static final int FrontRightSteerMtr_CAN_ID = 55;
+    public static final int FrontRightSteerCANCoder_CAN_ID = 56;
+    public static final int BackLeftDriveMtr_CAN_ID = 57;
+    public static final int BackLeftSteerMtr_CAN_ID = 58;       
+    public static final int BackLeftSteerCANCoder_CAN_ID = 59; 
+    public static final int BackRightDriveMtr_CAN_ID = 60;        
+    public static final int BackRightSteerMtr_CAN_ID = 61;
+    public static final int BackRightSteerCANCoder_CAN_ID = 62;
   }
 
   public static final class AnalogInput_IDs{

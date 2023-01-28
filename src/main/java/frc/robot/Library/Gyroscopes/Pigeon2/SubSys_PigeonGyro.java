@@ -88,7 +88,7 @@ public class SubSys_PigeonGyro extends SubsystemBase {
 
   public Boolean isBalanced(){
     var isBal = false;
-    if (m_Pigeon2Gyro.getRoll() > 4 || m_Pigeon2Gyro.getRoll() < -4) isBal = true;
+    if (m_Pigeon2Gyro.getRoll() < 8 && m_Pigeon2Gyro.getRoll() > -8 && m_Pigeon2Gyro.getPitch() < 8 && m_Pigeon2Gyro.getPitch() > -8) isBal = true;
     return isBal;
   }
 }
