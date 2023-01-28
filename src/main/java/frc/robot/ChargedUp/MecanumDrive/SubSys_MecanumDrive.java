@@ -20,7 +20,7 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 //trick
-public class Subsys_MecanumDrive extends SubsystemBase {
+public class SubSys_MecanumDrive extends SubsystemBase {
 
   private final WPI_VictorSPX m_frontLeftMotor = new WPI_VictorSPX(Const_MecanumDrive.k_FrontLeftMotorPort);
   private final WPI_VictorSPX m_rearLeftMotor = new WPI_VictorSPX(Const_MecanumDrive.k_RearLeftMotorPort);
@@ -31,7 +31,7 @@ public class Subsys_MecanumDrive extends SubsystemBase {
   
   private SubSys_PigeonGyro gyroSubSys; 
 
-  public Subsys_MecanumDrive() {
+  public SubSys_MecanumDrive() {
     m_frontRightMotor.setInverted(true);
     m_frontLeftMotor.setInverted(true);
     m_rearLeftMotor.setInverted(true);
