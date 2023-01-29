@@ -35,18 +35,19 @@ public class Cmd_AutoBalance extends CommandBase {
      * This code will check the angle that the robot is at and drive in the direction that is needed to balance the robot
      */
 
-    if (m_PigeonGyro.isBalanced() != true ){
-      //TODO: Switch to the constants defined in SubSys_ChargeStation_Constants after testing initial code
-        if (m_PigeonGyro.getRawGyroPitch() > 8){
-            m_DriveTrain.Drive(-.05, 0, 0, false, false, false);
-        } else if (m_PigeonGyro.getRawGyroPitch() < -8){
-            m_DriveTrain.Drive(.05, 0, 0, false, false, false);
-        } else if (m_PigeonGyro.getRawGyroRoll() > 8){
-            m_DriveTrain.Drive(0, -.05, 0, false, false, false);
-        } else if (m_PigeonGyro.getRawGyroRoll() < -8){
-            m_DriveTrain.Drive(0, .05, 0, false, false, false);
-        }
+    // Get the pitch and roll from the Pigeon IMU.
+    double pitch = m_PigeonGyro.getRawGyroPitch();
+    double roll = m_PigeonGyro.getRawGyroRoll();
+    
+    // If pitch is greater than 8 or less than -8...
+    if (pitch > 8 || pitch < -8) {
+        // Drive using the pitch as the speed. (gyro angle * 0.01 if the gyro is 8 degrees off, the robot will drive at 0.08 speed)
+        m_DriveTrain.Drive(-pitch * 0.01, 0, 0, false, false, false);
+    } else if (roll > 8 || roll < -8) { // If roll is greater than 8 or less than -8...
+        // Drive using the roll as the speed.
+        m_DriveTrain.Drive(0, -roll * 0.01, 0, false, false, false);
     }
+
 
   }
 
