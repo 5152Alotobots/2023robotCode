@@ -18,12 +18,16 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import frc.robot.ChargedUp.ChargeStation.Cmd_AutoBalance;
 import frc.robot.ChargedUp.DriverStation.SubSys_DriverStation;
+import frc.robot.ChargedUp.MecanumDrive.SubSys_MecanumDrive;
 import frc.robot.ChargedUp.Hand.SubSys_Hand;
 import frc.robot.ChargedUp.DriverStation.SubSys_DriverStation;
 import frc.robot.Library.DriveTrains.SubSys_DriveTrain;
 import frc.robot.Library.DriveTrains.Cmds_SubSys_DriveTrain.Cmd_SubSys_DriveTrain_JoysticDefault;
 import frc.robot.Library.Gyroscopes.Pigeon2.SubSys_PigeonGyro;
 import frc.robot.Library.Vision.Limelight.SubSys_LimeLight;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj2.command.RunCommand;
+import frc.robot.ChargedUp.MecanumDrive.Cmd.Cmd_MecanumDriveDefault;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -33,32 +37,21 @@ import frc.robot.Library.Vision.Limelight.SubSys_LimeLight;
  * commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  // The robot's subsystems and commands are defined here...
-
-  /**
-   ***** Library Components 
-   */
-
-  // ---- Power Distribution
+  
   // private final PDPSubSys m_PDPSubSys = new PDPSubSys();
 
-  // ---- NavXGyro
   //public final NavXGyroSubSys m_NavXGyroSubSys = new NavXGyroSubSys();
 
-  // ---- Pigeon2
   public final SubSys_PigeonGyro gyroSubSys = new SubSys_PigeonGyro();
 
-  // ---- LimeLight
   private final SubSys_LimeLight limeLightSubSys = new SubSys_LimeLight();
 
-  // ---- Drive Subsystem (Swerve)
+  public final SubSys_MecanumDrive MecanumDriveSubSys = new SubSys_MecanumDrive();
+
   public final SubSys_DriveTrain driveSubSys = new SubSys_DriveTrain(gyroSubSys);
 
-  /*
-  ***** Charged Up Componentes
-  */
- 
-  // ---- Driver Station
+  XboxController m_driverController = new XboxController(0); 
+
   public final SubSys_DriverStation driverStation = new SubSys_DriverStation();
 
   // ---- Hand
@@ -67,26 +60,9 @@ public class RobotContainer {
   // SetUp Auto
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
-  /*
-  ***** Auto Commands
-  */
-  /*
-
-  private final Command m_Auto_PathPlanner_Test_Cmd =
-      new DriveSubSys_PathPlanner_Test_Cmd(driveSubSys);
-    
-  private final Command m_Auto_PP_FollowTraj_Cmd =
-      new DriveSubSys_PP_FollowTraj_Cmd("New New Path",driveSubSys);
-
-  private final Command ihopethisworks =
-      new DriveSubSys_PathPlanner_Test_Cmd(driveSubSys);
-  */
-  
-  /*
-   * The container for the robot. Contains subsystems, OI devices, and commands.
-   */
   public RobotContainer() {
     // Configure the button bindings
+    
     configureButtonBindings();
 
     // Configure default commands
@@ -95,8 +71,17 @@ public class RobotContainer {
     ****** Control System Components
     */
 
-    // ---- Drive Subsystem Default Command
-    driveSubSys
+    // ---- Drive Subsystem Default Command (MECANUM DRIVE)
+    MecanumDriveSubSys.setDefaultCommand(
+      new Cmd_MecanumDriveDefault(
+        MecanumDriveSubSys, 
+      () -> m_driverController.getLeftX(), 
+      () -> m_driverController.getLeftY(),
+      () -> m_driverController.getRightX())
+      ); 
+    
+      // ---- Drive Subsystem Default Command (SWERVE DRIVE)
+    /*driveSubSys
       .setDefaultCommand(new Cmd_SubSys_DriveTrain_JoysticDefault(
         driveSubSys,
         () -> driverStation.DriveFwdAxis(),
@@ -106,6 +91,9 @@ public class RobotContainer {
         () -> driverStation.RotateLeftPt(),
         () -> driverStation.RotateRightPt()));
 
+    */
+    
+    
     // Sendable Chooser
     //m_chooser.setDefaultOption("Auto_BasicRevHighGoalRev_Cmd", m_Auto_BasicRevHighGoalRev_Cmd);
     //m_chooser.addOption("Auto_BasicRevLowGoalRev", m_Auto_BasicRevLowGoalRev_Cmd);
@@ -130,23 +118,30 @@ public class RobotContainer {
    * ({@link edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then
    * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
+
   private void configureButtonBindings() {
  
     // Gyro Reset Command Button
     driverStation.GyroResetButton.onTrue(
         new InstantCommand(driveSubSys::zeroGyro, driveSubSys));
-    //Open/Close Hand
+        
     driverStation.OpenHandButton.onTrue(
         new InstantCommand(handSubSys::OpenHand, handSubSys));
+
     driverStation.CloseHandButton.onTrue(
         new InstantCommand(handSubSys::CloseHand, handSubSys));
+
     driverStation.AutoBalanceButton.whileTrue(
       new Cmd_AutoBalance(gyroSubSys, driveSubSys));
   }
+
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
    * @return the command to run in autonomous
    */
+  public Command getAutonomousCommand() {
+    return m_chooser.getSelected();
+  }
 }
