@@ -72,6 +72,7 @@ public class RobotContainer {
     */
 
     // ---- Drive Subsystem Default Command (MECANUM DRIVE)
+    /*
     MecanumDriveSubSys.setDefaultCommand(
       new Cmd_MecanumDriveDefault(
         MecanumDriveSubSys, 
@@ -79,9 +80,11 @@ public class RobotContainer {
       () -> m_driverController.getLeftY(),
       () -> m_driverController.getRightX())
       ); 
+
+      */
     
       // ---- Drive Subsystem Default Command (SWERVE DRIVE)
-    /*driveSubSys
+    driveSubSys
       .setDefaultCommand(new Cmd_SubSys_DriveTrain_JoysticDefault(
         driveSubSys,
         () -> driverStation.DriveFwdAxis(),
@@ -91,7 +94,6 @@ public class RobotContainer {
         () -> driverStation.RotateLeftPt(),
         () -> driverStation.RotateRightPt()));
 
-    */
     
     
     // Sendable Chooser

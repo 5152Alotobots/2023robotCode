@@ -1,0 +1,26 @@
+{
+  "HALProvider": {
+    "Other Devices": {
+      "Compressor[20]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Victor SPX[3]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Victor SPX[4]": {
+        "header": {
+          "open": true
+        }
+      }
+    }
+  },
+  "NTProvider": {
+    "types": {
+      "/FMSInfo": "FMSInfo"
+    }
+  }
+}
