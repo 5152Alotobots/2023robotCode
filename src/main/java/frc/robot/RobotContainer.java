@@ -59,7 +59,7 @@ public class RobotContainer {
   
   // SetUp Auto
   SendableChooser<Command> m_chooser = new SendableChooser<>();
-
+  SendableChooser<Command> driveChooser = new SendableChooser<>();
   public RobotContainer() {
     // Configure the button bindings
     
@@ -70,6 +70,23 @@ public class RobotContainer {
     /**
     ****** Control System Components
     */
+
+    driveChooser.setDefaultOption("Swerve Drive", new Cmd_SubSys_DriveTrain_JoysticDefault(
+      driveSubSys,
+      () -> driverStation.DriveFwdAxis(),
+      () -> driverStation.DriveStrAxis(),
+      () -> driverStation.DriveRotAxis(),
+      false,
+      () -> driverStation.RotateLeftPt(),
+      () -> driverStation.RotateRightPt()
+      ));
+      driveChooser.addOption("Mecanum Drive", new Cmd_MecanumDriveDefault(
+        MecanumDriveSubSys, 
+      () -> m_driverController.getLeftX(), 
+      () -> m_driverController.getLeftY(),
+      () -> m_driverController.getRightX())
+      );
+      SmartDashboard.putData(driveChooser);
 
     // ---- Drive Subsystem Default Command (MECANUM DRIVE)
     /*
@@ -84,7 +101,7 @@ public class RobotContainer {
       */
     
       // ---- Drive Subsystem Default Command (SWERVE DRIVE)
-    driveSubSys
+   /*  driveSubSys
       .setDefaultCommand(new Cmd_SubSys_DriveTrain_JoysticDefault(
         driveSubSys,
         () -> driverStation.DriveFwdAxis(),
@@ -93,7 +110,7 @@ public class RobotContainer {
         false,
         () -> driverStation.RotateLeftPt(),
         () -> driverStation.RotateRightPt()));
-
+*/
     
     
     // Sendable Chooser
