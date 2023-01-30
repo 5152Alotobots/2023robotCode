@@ -7,6 +7,7 @@ package frc.robot.ChargedUp.ChargeStation;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Library.DriveTrains.SubSys_DriveTrain;
 import frc.robot.Library.Gyroscopes.Pigeon2.SubSys_PigeonGyro;
+import frc.robot.ChargedUp.ChargeStation.SubSys_ChargeStation_Constants;
 
 
 public class Cmd_AutoBalance extends CommandBase {
@@ -38,15 +39,13 @@ public class Cmd_AutoBalance extends CommandBase {
     double pitch = m_PigeonGyro.getRawGyroPitch();
     double roll = m_PigeonGyro.getRawGyroRoll();
     
-    // If pitch is greater than 8 or less than -8...
-    if (pitch > 8 || pitch < -8) {
+    if (pitch > SubSys_ChargeStation_Constants.maxPitch || SubSys_ChargeStation_Constants.minPitch < -8) {
         // Drive using the pitch as the speed. (gyro angle * 0.01 if the gyro is 8 degrees off, the robot will drive at 0.08 speed)
         m_DriveTrain.Drive(-pitch * 0.01, 0, 0, false, false, false);
-    } else if (roll > 8 || roll < -8) { // If roll is greater than 8 or less than -8...
+    } else if (roll > SubSys_ChargeStation_Constants.maxRoll || roll < SubSys_ChargeStation_Constants.minRoll) {
         // Drive using the roll as the speed.
         m_DriveTrain.Drive(0, -roll * 0.01, 0, false, false, false);
     }
-
 
   }
 
