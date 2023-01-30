@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import frc.robot.ChargedUp.ColorSensor.Subsys_ColorSensor;
 import frc.robot.ChargedUp.DriverStation.SubSys_DriverStation;
 import frc.robot.Library.DriveTrains.SubSys_DriveTrain;
 import frc.robot.Library.DriveTrains.Cmds_SubSys_DriveTrain.Cmd_SubSys_DriveTrain_JoysticDefault;
@@ -47,6 +48,7 @@ public class RobotContainer {
   // ---- Drive Subsystem (Swerve)
   public final SubSys_DriveTrain driveSubSys = new SubSys_DriveTrain(gyroSubSys);
 
+  public final Subsys_ColorSensor colorSubSys = new Subsys_ColorSensor();
   /*
   ***** Charged Up Componentes
   */
