@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.RepeatCommand;
 import frc.robot.ChargedUp.ChargeStation.Cmd_AutoBalance;
 import frc.robot.ChargedUp.DriverStation.SubSys_DriverStation;
 import frc.robot.ChargedUp.MecanumDrive.SubSys_MecanumDrive;
@@ -71,7 +72,7 @@ public class RobotContainer {
     ****** Control System Components
     */
 
-    driveChooser.setDefaultOption("Swerve Drive", new Cmd_SubSys_DriveTrain_JoysticDefault(
+    /*driveChooser.setDefaultOption("Swerve Drive", new Cmd_SubSys_DriveTrain_JoysticDefault(
       driveSubSys,
       () -> driverStation.DriveFwdAxis(),
       () -> driverStation.DriveStrAxis(),
@@ -87,7 +88,7 @@ public class RobotContainer {
       () -> m_driverController.getRightX())
       );
       SmartDashboard.putData(driveChooser);
-
+*/
     // ---- Drive Subsystem Default Command (MECANUM DRIVE)
     /*
     MecanumDriveSubSys.setDefaultCommand(
@@ -101,7 +102,7 @@ public class RobotContainer {
       */
     
       // ---- Drive Subsystem Default Command (SWERVE DRIVE)
-   /*  driveSubSys
+     driveSubSys
       .setDefaultCommand(new Cmd_SubSys_DriveTrain_JoysticDefault(
         driveSubSys,
         () -> driverStation.DriveFwdAxis(),
@@ -110,7 +111,7 @@ public class RobotContainer {
         false,
         () -> driverStation.RotateLeftPt(),
         () -> driverStation.RotateRightPt()));
-*/
+
     
     
     // Sendable Chooser
