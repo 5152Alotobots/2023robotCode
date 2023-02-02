@@ -25,7 +25,7 @@ import frc.robot.Library.Vision.Limelight.SubSys_LimeLight;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import frc.robot.ChargedUp.MecanumDrive.Cmd.Cmd_MecanumDriveDefault;
-
+import frc.robot.ChargedUp.DistanceSensor.SubSys_DistanceSensor;
 /**
  * This class is where the bulk of the robot should be declared. Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -55,6 +55,8 @@ public class RobotContainer {
 
   // ---- Hand
   public final SubSys_Hand handSubSys = new SubSys_Hand();
+
+  public final SubSys_DistanceSensor distanceSubsys = new SubSys_DistanceSensor();
   
   // SetUp Auto
   SendableChooser<Command> m_chooser = new SendableChooser<>();
