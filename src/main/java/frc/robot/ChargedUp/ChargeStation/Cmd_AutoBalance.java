@@ -35,7 +35,10 @@ public class Cmd_AutoBalance extends CommandBase {
     m_endTimer_seconds.start();
     newMovement = true;
     finished = false;
+    speed = 0.040;
+    
   }
+  public double speed;
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -52,18 +55,21 @@ public class Cmd_AutoBalance extends CommandBase {
       if (pitch > SubSys_ChargeStation_Constants.maxPitch || pitch < SubSys_ChargeStation_Constants.minPitch) {
         // Drive using the pitch as the speed. (gyro angle * 0.01 if the gyro is 8
         // degrees off, the robot will drive at 0.08 speed)
-        m_DriveTrain.Drive(-pitch * 0.01, 0, 0, false, false, false);
+        m_DriveTrain.Drive(-pitch * speed, 0, 0, false, false, false);
       } 
       else if (roll > SubSys_ChargeStation_Constants.maxRoll || roll < SubSys_ChargeStation_Constants.minRoll) {
         // Drive using the roll as the speed.
-        m_DriveTrain.Drive(0, roll * 0.01, 0, false, false, false);
+        m_DriveTrain.Drive(0, roll * speed, 0, false, false, false);
       }
       else {
         finished = true;
       }
       newMovement = false;
+      // if (speed > 0.015) {
+      // speed = speed - 0.0025;
+      // }
 
-    } else if (m_endTimer_seconds.get() >= 1.5) {
+    } else if (m_endTimer_seconds.get() >= 2.25) {
       if (pitch > SubSys_ChargeStation_Constants.maxPitch || pitch < SubSys_ChargeStation_Constants.minPitch || roll > SubSys_ChargeStation_Constants.maxRoll || roll < SubSys_ChargeStation_Constants.minRoll) {
         newMovement = true;
         m_endTimer_seconds.reset();
@@ -72,7 +78,8 @@ public class Cmd_AutoBalance extends CommandBase {
       } else {
         finished = true;
       }
-    } else if (m_endTimer_seconds.get() >= 1) {
+      //changed to 0.5 from 1
+    } else if (m_endTimer_seconds.get() >= 0.50) {
       m_DriveTrain.Drive(0, 0, 0, false, false, false);
 
     } 

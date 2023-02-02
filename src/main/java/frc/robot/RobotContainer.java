@@ -105,9 +105,9 @@ public class RobotContainer {
      driveSubSys
       .setDefaultCommand(new Cmd_SubSys_DriveTrain_JoysticDefault(
         driveSubSys,
-        () -> driverStation.DriveFwdAxis(),
-        () -> driverStation.DriveStrAxis(),
-        () -> driverStation.DriveRotAxis(),
+        () -> driverStation.DriveFwdAxis()*.2,
+        () -> driverStation.DriveStrAxis()*.2,
+        () -> driverStation.DriveRotAxis()*.2,
         false,
         () -> driverStation.RotateLeftPt(),
         () -> driverStation.RotateRightPt()));
