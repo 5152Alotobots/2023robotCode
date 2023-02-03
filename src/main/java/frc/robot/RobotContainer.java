@@ -28,6 +28,7 @@ import frc.robot.Library.Vision.Limelight.SubSys_LimeLight;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import frc.robot.ChargedUp.MecanumDrive.Cmd.Cmd_MecanumDriveDefault;
+import frc.robot.ChargedUp.AutoCommands.Auto_YOUBETTERWORKORELSE_Cmd;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -126,9 +127,11 @@ public class RobotContainer {
     //m_chooser.addOption("BasicAutoHigh", m_BasicAutoHighCmd);
     //m_chooser.addOption("BasicAutoHighExtraBalls", m_BasicAutoHighExtraBallsCmd);
     //m_chooser.addOption("HighshotAuto", m_LeftCenterHigh_Cmd);
-    
+    final Command m_YOUBETTERWORKORELSE = new Auto_YOUBETTERWORKORELSE_Cmd(driveSubSys);
 
-    //SmartDashboard.putData(m_chooser);
+    m_chooser.setDefaultOption("Hurry", m_YOUBETTERWORKORELSE);
+
+    SmartDashboard.putData(m_chooser);
   }
 
   /**
