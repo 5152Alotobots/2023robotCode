@@ -9,43 +9,38 @@ import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
 import com.revrobotics.ColorSensorV3;
-import frc.robot.ChargedUp.ColorSensor.Const_ColorSensor;
+// import frc.robot.ChargedUp.ColorSensor.Const_ColorSensor;
 
-public class Subsys_ColorSensor extends SubsystemBase {
-  // public Subsys_ColorSensor() {}
+public class SubSys_ColorSensor extends SubsystemBase {
+  public SubSys_ColorSensor() {}
 
-  // private final I2C.Port i2cPort = I2C.Port.kOnboard;
-  // private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+  private final I2C.Port i2cPort = I2C.Port.kOnboard;
+  private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
   
-  // private Color detectedColor;
-  // private double amountOfBlue = detectedColor.blue;
+  private Color detectedColor;
+  private double amountOfBlue = detectedColor.blue;
 
-  // private double IR;
+  private double IR;
 
-  // @Override
-  // public void periodic() {
+  @Override
+  public void periodic() {
   
-  //   detectedColor = m_colorSensor.getColor();
+    detectedColor = m_colorSensor.getColor();
       
-  //   IR = m_colorSensor.getIR();
+    IR = m_colorSensor.getIR();
 
-  //   SmartDashboard.putNumber("Red", detectedColor.red);
-  //   SmartDashboard.putNumber("Green", detectedColor.green);
-  //   SmartDashboard.putNumber("Blue", detectedColor.blue);
-  //   SmartDashboard.putNumber("IR", IR);
-  //   SmartDashboard.putString("Game Obj ColSens", GetTypeOfGameElement().toString());
-  // }
-  enum GameElement {
-    CONE,
-    CUBE,
-    NA
+    SmartDashboard.putNumber("Red", detectedColor.red);
+    SmartDashboard.putNumber("Green", detectedColor.green);
+    SmartDashboard.putNumber("Blue", detectedColor.blue);
+    SmartDashboard.putNumber("IR", IR);
+    SmartDashboard.putString("Game Obj ColSens", GetTypeOfGameElement().toString());
   }
  
-  public GameElement GetTypeOfGameElement() {
-    // @return GameElement can be CONE, CUBE, or NA
-    if (amountOfBlue < Const_ColorSensor.kMAXAmountOfBlueInCONE) return GameElement.CONE; 
-    if (amountOfBlue > Const_ColorSensor.kMINAmountOfBlueInCUBE) return GameElement.CUBE;
+  public String GetTypeOfGameElement() {
+    //@return GameElement can be CONE, CUBE, or NA
+    if (amountOfBlue < Const_ColorSensor.kMAXAmountOfBlueInCONE) return "CONE"; 
+    if (amountOfBlue > Const_ColorSensor.kMINAmountOfBlueInCUBE) return "CUBE";
     
-    return GameElement.NA;
+    return "N/A";
   }
 }

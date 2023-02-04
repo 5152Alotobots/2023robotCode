@@ -35,7 +35,13 @@ public class SubSys_PigeonGyro extends SubsystemBase {
     SmartDashboard.putNumber("GyroYaw", m_Pigeon2Gyro.getYaw());
     SmartDashboard.putNumber("GyroCompass", m_Pigeon2Gyro.getCompassHeading());
   }
+  public double getRawGyroPitch(){
+    return m_Pigeon2Gyro.getPitch();
+  }
 
+  public double getRawGyroRoll(){
+    return m_Pigeon2Gyro.getRoll();
+  }
   /**
    * Return Raw Gyro Angle
    * @return Raw Angle double raw Gyro Angle
