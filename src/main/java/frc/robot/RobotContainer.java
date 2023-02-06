@@ -56,20 +56,25 @@ public class RobotContainer {
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   public RobotContainer() {
-    // Configure the button bindings
     
     configureButtonBindings();
 
     mecanumDriveSubSys.setDefaultCommand(
       new Cmd_MecanumDriveDefault(
         mecanumDriveSubSys, 
-      () -> m_driverController.getLeftX(), 
-      () -> m_driverController.getLeftY(),
-      () -> m_driverController.getRightX())
-      ); 
+        () -> m_driverController.getLeftX(), 
+        () -> m_driverController.getLeftY(),
+        () -> m_driverController.getRightX()
+      )
+    ); 
 
     handSubSys.setDefaultCommand(
-      new Cmd_HandWithSensor(handSubSys, colorSubSys, distanceSubsys, () -> driverStation.HandSensorBtn())
+      new Cmd_HandWithSensor(
+        handSubSys, 
+        colorSubSys, 
+        distanceSubsys, 
+        () -> driverStation.HandSensorBtn()
+      )
     );
   }
   public void periodic() {

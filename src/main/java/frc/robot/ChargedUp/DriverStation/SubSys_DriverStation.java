@@ -6,7 +6,7 @@ package frc.robot.ChargedUp.DriverStation;
 
 import edu.wpi.first.wpilibj.XboxController;
 // import edu.wpi.first.wpilibj.GenericHID.RumbleType;
-// import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -60,7 +60,8 @@ public class SubSys_DriverStation extends SubsystemBase {
 
 
   public double HandSensorBtn() {
-    boolean value = m_AuxDriverController.getRawButton(0);
-    if (value == true) return 1; else return 0;
+    boolean buttonValue = m_AuxDriverController.getRawButton(0);
+    SmartDashboard.putBoolean("Hand Ready", buttonValue);
+    if (buttonValue == true) return 1; else return 0;
   }
 }

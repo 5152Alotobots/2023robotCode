@@ -59,9 +59,9 @@ public class Cmd_HandWithSensor extends CommandBase {
     String seenGameElement = colorSensorSubSys.GetTypeOfGameElement();
 
     double distance = distanceSensorSubSys.GetDistance();
-   
+    
+    
     if (handisOpen) {
-
       if (seenGameElement == "CONE" && distance == kdistanceToCone) {
         //*Enable LED
         SmartDashboard.putString("Hand Ready", "Hand is ready with a cone"); 
@@ -72,6 +72,9 @@ public class Cmd_HandWithSensor extends CommandBase {
         //*Enable LED 
         SmartDashboard.putString("Hand Ready", "Hand is ready with a cube");
         if (activationButton.getAsDouble() == 1.0) { handSubSys.CloseHand(); handisOpen = false; }
+      }
+      else {
+        SmartDashboard.putString("Hand Ready", "Hand is not ready");
       }
     }
   }
