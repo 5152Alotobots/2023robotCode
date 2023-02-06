@@ -19,8 +19,10 @@ public class Cmd_MecanumDriveDefault extends CommandBase {
   
   
   /**Constructor 
-   * @param TestFalconSubsystem
-   * @param Joystick_DS 
+   * @param MecanumDriveSubsystem
+   * @param leftYJoy
+   * @param leftXJoy 
+   * @param rightXJoy
    */
   public Cmd_MecanumDriveDefault( SubSys_MecanumDrive DriveSys, DoubleSupplier lefty, DoubleSupplier leftx, DoubleSupplier rightx) {
     // Use addRequirements() here to declare subsystem dependencies.
