@@ -5,11 +5,14 @@
 
 package frc.robot.ChargedUp.AutoCommands;
 
+import com.pathplanner.lib.PathPlannerTrajectory;
+
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants.RobotSettings;
 import frc.robot.Library.DriveTrains.SubSys_DriveTrain;
+import frc.robot.Library.DriveTrains.AutonSubsystems.SubSys_Hurry;
 import frc.robot.Library.DriveTrains.SwerveDrive.*;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -28,8 +31,9 @@ public class Auto_YOUBETTERWORKORELSE_Cmd extends SequentialCommandGroup {
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
       
-  
-  
+  new ParallelCommandGroup(
+
+  )
       )
       ;
   }

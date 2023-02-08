@@ -155,6 +155,24 @@ public class RobotContainer {
 
     driverStation.AutoBalanceButton.whileTrue(
       new Cmd_AutoBalance(gyroSubSys, driveSubSys));
+
+  //driverStation.TurboButton.whiletrue(
+  //new Cmd_DriveSubSys_TurboSpeed(0));
+    
+  //driverStation.SnailButton.whiletrue(
+  //new Cmd_DriveSubSys_SnailSpeed(0));
+ 
+  //driverStation.HighPoleShelfButton.whileTrue(
+  //new Cmd_SubSys_Arm_Position(0));
+  
+  //driverStation.MiddlePoleShelfButton.whiletrue(
+  //new Cmd_SubSys_Arm_position(0));
+
+  //driverStation.FlapperDownButton.whiletrue(
+  //new Cmd_SubSys_Flap_position(0));
+
+  //driverStation.FlapperUpButton.whiletrue(
+  //new Cmd_SubSys_Flap_position(0));
   }
 
 

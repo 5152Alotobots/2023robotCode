@@ -73,7 +73,7 @@ public class SubSys_Hurry extends CommandBase {
     
     //m_TrajectoryPathweaver = m_TrajectoryPathweaver.transformBy(transform);
 
-    m_Test = PathPlanner.loadPath("Right Turn Challenge 1", 1, 1);
+    m_Test = PathPlanner.loadPath("Hurry", 1, 1);
 
     /*
     m_HolonomicController = new HolonomicDriveController(
@@ -130,10 +130,10 @@ public class SubSys_Hurry extends CommandBase {
     SmartDashboard.putNumber("YVel_Cmd", adjustedSpeeds.vyMetersPerSecond);
     SmartDashboard.putNumber("Rot_Cmd", adjustedSpeeds.omegaRadiansPerSecond);
 */
-    m_DriveTrain.Drive(
-      adjustedSpeeds.vxMetersPerSecond, 
-      adjustedSpeeds.vyMetersPerSecond,
-      adjustedSpeeds.omegaRadiansPerSecond, true, false, false);
+    //m_DriveTrain.Drive(
+    //  adjustedSpeeds.vxMetersPerSecond, 
+    //  adjustedSpeeds.vyMetersPerSecond,
+    //  adjustedSpeeds.omegaRadiansPerSecond, true, false, false);
   
     /*
     m_DriveSubSys.Drive(

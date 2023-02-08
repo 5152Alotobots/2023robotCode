@@ -22,27 +22,25 @@ public class SubSys_DriverStation extends SubsystemBase {
   // AuxDriver Controller
   private XboxController m_AuxDriverController = new XboxController(2);
 
-  public JoystickButton IntakeArmLowPosButton = new JoystickButton(m_CoDriverController, 2);
-  public JoystickButton IntakeArmHighPosButton = new JoystickButton(m_CoDriverController, 4);
-  public JoystickButton IntakeArmDownPosButton = new JoystickButton(m_CoDriverController, 3);
-
-  public JoystickButton LimeLightAutoRotateButton = new JoystickButton(m_AuxDriverController, 2);
-  public JoystickButton LimeLightAutoRangeButton = new JoystickButton(m_AuxDriverController, 3);
-  
-  public JoystickButton LimeLightAutoRotate2HubButton = new JoystickButton(m_DriverController, 10);
-  public JoystickButton LimeLightAutoShootButton = new JoystickButton(m_CoDriverController, 10);
-
-  public JoystickButton LiftFwdPosButton = new JoystickButton(m_AuxDriverController, 1);
-  //public JoystickButton LiftRevPosButton = new JoystickButton(m_AuxDriverController, 4);
-
-  public JoystickButton ClimbEnableButton = new JoystickButton(m_AuxDriverController, 5);
-  public JoystickButton ClimbResetButton = new JoystickButton(m_AuxDriverController, 6);
 
   public JoystickButton GyroResetButton = new JoystickButton(m_AuxDriverController, 4);
-
-  public JoystickButton CloseHandButton = new JoystickButton(m_CoDriverController, 6);
-  public JoystickButton OpenHandButton = new JoystickButton(m_CoDriverController, 5);
+  public JoystickButton CloseHandButton = new JoystickButton(m_CoDriverController, 12);
+  public JoystickButton OpenHandButton = new JoystickButton(m_CoDriverController, 11);
   public JoystickButton AutoBalanceButton = new JoystickButton(m_DriverController, 1);
+  public JoystickButton MiddlePoleShelfButton = new JoystickButton(m_CoDriverController, 1);
+  public JoystickButton SnailButton = new JoystickButton(m_DriverController, 5);
+  public JoystickButton TurboButton = new JoystickButton(m_DriverController, 6);
+  public JoystickButton FlapperDownButton = new JoystickButton(m_CoDriverController, 3);
+  public JoystickButton FlapperUpButton = new JoystickButton(m_CoDriverController, 2);
+  public JoystickButton HighPoleShelfButton = new JoystickButton(m_CoDriverController, 4);
+  
+  public double ArmPositive(){
+    return -m_CoDriverController.getRawAxis(1);
+  }
+  
+  public double FlapperPositive(){
+    return -m_CoDriverController.getRawAxis(5);
+  }
 
   public SubSys_DriverStation() {
   }
